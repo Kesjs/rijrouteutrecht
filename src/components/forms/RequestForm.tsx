@@ -6,6 +6,7 @@ import { requestSchema, fieldErrors } from "@/lib/validation";
 import { licenseCategories } from "@/data/license-categories";
 import { packages } from "@/data/packages";
 import { site } from "@/data/site";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -45,10 +46,38 @@ export function RequestForm({
       >,
     ) =>
       setValues((v) => ({ ...v, [k]: e.target.value }));
+  const update =
+    (k: keyof typeof values) =>
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+      >,
+    ) => {
+      setValues((v) => ({ ...v, [k]: e.target.value }));
+      setFormError("");
+      setErrors((current) => {
+        if (!current[k]) return current;
+        const next = { ...current };
+        delete next[k];
+        return next;
+      });
+    };
   const aria = (k: string) => ({
     "aria-invalid": !!errors[k],
     "aria-describedby": errors[k] ? `${k}-error` : undefined,
   });
+  const onConsentChange = (value: boolean) => {
+    setConsent(value);
+    setFormError("");
+    if (value) {
+      setErrors((current) => {
+        if (!current.toestemming) return current;
+        const next = { ...current };
+        delete next.toestemming;
+        return next;
+      });
+    }
+  };
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -78,6 +107,7 @@ export function RequestForm({
         const data = await res.json();
         setErrors(data.errors ?? {});
         setStatus("idle");
+        setTimeout(() => summary.current?.focus(), 0);
         return;
       }
       if (!res.ok) {
@@ -141,7 +171,9 @@ export function RequestForm({
             name="naam"
             autoComplete="name"
             value={values.naam}
-            onChange={set("naam")}
+            onChange={update("naam")}
+            required
+            maxLength={100}
             className={inputClass}
             {...aria("naam")}
           />
@@ -153,7 +185,9 @@ export function RequestForm({
             type="email"
             autoComplete="email"
             value={values.email}
-            onChange={set("email")}
+            onChange={update("email")}
+            required
+            maxLength={200}
             className={inputClass}
             {...aria("email")}
           />
@@ -165,7 +199,8 @@ export function RequestForm({
             type="tel"
             autoComplete="tel"
             value={values.telefoon}
-            onChange={set("telefoon")}
+            onChange={update("telefoon")}
+            maxLength={30}
             className={inputClass}
             {...aria("telefoon")}
           />
@@ -177,7 +212,7 @@ export function RequestForm({
                 id="categorie"
                 name="categorie"
                 value={values.categorie}
-                onChange={set("categorie")}
+                onChange={update("categorie")}
                 className={selectClass}
                 {...aria("categorie")}
               >
@@ -188,7 +223,7 @@ export function RequestForm({
                   </option>
                 ))}
               </select>
-              <span aria-hidden className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate">⌄</span>
+              <ChevronDownIcon aria-hidden className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate" />
             </div>
           </Field>
         )}
@@ -200,7 +235,7 @@ export function RequestForm({
               id="pakket"
               name="pakket"
               value={values.pakket}
-              onChange={set("pakket")}
+              onChange={update("pakket")}
               className={selectClass}
               {...aria("pakket")}
             >
@@ -211,7 +246,7 @@ export function RequestForm({
                 </option>
               ))}
             </select>
-            <span aria-hidden className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate">⌄</span>
+            <ChevronDownIcon aria-hidden className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate" />
           </div>
         </Field>
       )}
@@ -227,7 +262,10 @@ export function RequestForm({
           name="bericht"
           rows={5}
           value={values.bericht}
-          onChange={set("bericht")}
+          onChange={update("bericht")}
+          required
+          minLength={5}
+          maxLength={2000}
           className={inputClass}
           aria-describedby={errors.bericht ? "bericht-error" : "bericht-hint"}
           aria-invalid={!!errors.bericht}
@@ -250,7 +288,7 @@ export function RequestForm({
       </div>
       <Consent
         checked={consent}
-        onChange={setConsent}
+        onChange={onConsentChange}
         error={errors.toestemming}
       />
       <Button type="submit" disabled={status === "loading"}>

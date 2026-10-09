@@ -1,5 +1,5 @@
 export const inputClass =
-  "min-h-11 w-full rounded-[7.6px] border border-fog bg-pure-white px-3 py-[10px] text-[15px] placeholder:text-fog transition-[border-color,box-shadow] focus:border-vivid-indigo focus:outline-none focus:ring-2 focus:ring-vivid-indigo/20 aria-[invalid=true]:border-error";
+  "min-h-11 w-full rounded-[7.6px] border border-fog bg-pure-white px-3 py-[10px] text-[16px] placeholder:text-fog transition-[border-color,box-shadow] focus:border-vivid-indigo focus:outline-none focus:ring-2 focus:ring-vivid-indigo/20 sm:text-[15px] aria-[invalid=true]:border-error";
 
 export const selectClass = `${inputClass} appearance-none pr-10`;
 

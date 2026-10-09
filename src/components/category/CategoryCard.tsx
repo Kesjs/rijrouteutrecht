@@ -56,10 +56,14 @@ export function CategoryCard({ cat }: { cat: LicenseCategory }) {
           ))}
         </div>
       )}
-      <p className="mt-auto pt-5 font-bold text-vivid-indigo">
-        {cat.priceLabel}{" "}
-        <span className="font-medium text-slate">richtprijs</span>
-      </p>
+      <div className="mt-auto border-t border-fog/70 pt-4">
+        <span className="block text-[11px] font-bold uppercase tracking-[0.08em] text-slate">
+          Richtprijs
+        </span>
+        <span className="mt-1 block text-[24px] font-bold leading-none tracking-[-0.02em] text-vivid-indigo">
+          {cat.priceLabel}
+        </span>
+      </div>
       <span className="mt-3 inline-flex items-center gap-1 text-[14px] font-bold text-graphite transition-colors group-hover:text-vivid-indigo">
         Bekijk categorie <ArrowRightIcon aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-1" />
       </span>
