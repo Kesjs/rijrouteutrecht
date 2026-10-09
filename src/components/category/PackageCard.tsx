@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Package } from "@/data/packages";
+import { CheckIcon } from "@radix-ui/react-icons";
 
 export function PackageCard({ pkg }: { pkg: Package }) {
   const featured = pkg.slug === "beginner";
@@ -21,9 +22,7 @@ export function PackageCard({ pkg }: { pkg: Package }) {
       <ul className="mt-4 space-y-1 text-[14px]">
         {pkg.includes.map((i) => (
           <li key={i} className="flex gap-2">
-            <span aria-hidden className="text-vivid-indigo">
-              ✓
-            </span>
+            <CheckIcon aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-vivid-indigo" />
             <span>{i}</span>
           </li>
         ))}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { LicenseCategory } from "@/data/license-categories";
 import { IndicativeBadge } from "@/components/ui/Badge";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 function CategoryGlyph({ slug }: { slug: string }) {
   const common = {
@@ -60,7 +61,7 @@ export function CategoryCard({ cat }: { cat: LicenseCategory }) {
         <span className="font-medium text-slate">richtprijs</span>
       </p>
       <span className="mt-3 inline-flex items-center gap-1 text-[14px] font-bold text-graphite transition-colors group-hover:text-vivid-indigo">
-        Bekijk categorie <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+        Bekijk categorie <ArrowRightIcon aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-1" />
       </span>
     </Link>
   );

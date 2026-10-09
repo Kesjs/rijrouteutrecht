@@ -42,10 +42,13 @@ body {
   line-height: 1.5;
   color: var(--color-graphite);
   background: var(--color-pure-white);
+  overflow-x: hidden;
+  padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
 }
 
 img {
   display: block;
+  max-width: 100%;
 }
 
 h1,
@@ -160,5 +163,15 @@ nav a:focus-visible::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .image-frame {
+    min-height: 220px;
+  }
+
+  .discovery-images .image-frame {
+    min-height: 250px;
   }
 }
