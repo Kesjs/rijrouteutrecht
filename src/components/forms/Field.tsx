@@ -1,6 +1,8 @@
 export const inputClass =
   "min-h-11 w-full rounded-[7.6px] border border-fog bg-pure-white px-3 py-[10px] text-[15px] placeholder:text-fog transition-[border-color,box-shadow] focus:border-vivid-indigo focus:outline-none focus:ring-2 focus:ring-vivid-indigo/20 aria-[invalid=true]:border-error";
 
+export const selectClass = `${inputClass} appearance-none pr-10`;
+
 export function Field({
   id,
   label,
@@ -55,15 +57,21 @@ export function Consent({
 }) {
   return (
     <div>
-      <label className="flex items-start gap-3 text-[14px]">
+      <label className="group flex cursor-pointer items-start gap-3 text-[14px]">
         <input
           type="checkbox"
           checked={checked}
           onChange={(e) => onChange(e.target.checked)}
           aria-invalid={!!error}
           aria-describedby={error ? "toestemming-error" : undefined}
-          className="mt-1 h-4 w-4 accent-vivid-indigo"
+          className="peer sr-only"
         />
+        <span
+          aria-hidden
+          className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-[5px] border border-fog bg-pure-white text-[13px] font-bold text-pure-white transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-vivid-indigo peer-checked:border-vivid-indigo peer-checked:bg-vivid-indigo"
+        >
+          ✓
+        </span>
         <span>
           Ik geef toestemming om mijn gegevens te verwerken voor deze aanvraag,
           zoals beschreven in het{" "}
@@ -75,6 +83,47 @@ export function Consent({
       </label>
       {error && (
         <p id="toestemming-error" className="mt-1 text-[13px] text-error">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
+export function AgreementCheckbox({
+  checked,
+  onChange,
+  error,
+  children,
+  errorId,
+}: {
+  checked: boolean;
+  onChange: (v: boolean) => void;
+  error?: string;
+  children: React.ReactNode;
+  errorId: string;
+}) {
+  return (
+    <div>
+      <label className="group flex cursor-pointer items-start gap-3 text-[14px]">
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={(e) => onChange(e.target.checked)}
+          aria-invalid={!!error}
+          aria-describedby={error ? errorId : undefined}
+          className="peer sr-only"
+        />
+        <span
+          aria-hidden
+          className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-[5px] border border-fog bg-pure-white text-[13px] font-bold text-pure-white transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-vivid-indigo peer-checked:border-vivid-indigo peer-checked:bg-vivid-indigo"
+        >
+          ✓
+        </span>
+        <span>{children}</span>
+      </label>
+      {error && (
+        <p id={errorId} className="mt-1 text-[13px] text-error">
           {error}
         </p>
       )}

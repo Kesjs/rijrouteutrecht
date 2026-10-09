@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Field, Consent, inputClass } from "./Field";
+import { Field, Consent, AgreementCheckbox, inputClass } from "./Field";
 import { checkoutSchema, fieldErrors } from "@/lib/validation";
 import { site } from "@/data/site";
 
@@ -73,7 +73,7 @@ export function CheckoutForm({ slug }: { slug: string }) {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-5">
+    <form onSubmit={onSubmit} noValidate className="space-y-6" aria-busy={loading}>
       <div
         ref={summary}
         tabIndex={-1}
@@ -146,35 +146,18 @@ export function CheckoutForm({ slug }: { slug: string }) {
         onChange={setConsent}
         error={errors.toestemming}
       />
-      <div>
-        <label className="flex items-start gap-3 text-[14px]">
-          <input
-            type="checkbox"
-            checked={terms}
-            onChange={(e) => setTerms(e.target.checked)}
-            aria-invalid={!!errors.voorwaarden}
-            aria-describedby={
-              errors.voorwaarden ? "voorwaarden-error" : undefined
-            }
-            className="mt-1 h-4 w-4 accent-vivid-indigo"
-          />
-          <span>
-            Ik ga akkoord met de{" "}
-            <a
-              href="/algemene-voorwaarden"
-              className="font-bold text-vivid-indigo underline"
-            >
-              algemene voorwaarden
-            </a>
-            .
-          </span>
-        </label>
-        {errors.voorwaarden && (
-          <p id="voorwaarden-error" className="mt-1 text-[13px] text-error">
-            {errors.voorwaarden}
-          </p>
-        )}
-      </div>
+      <AgreementCheckbox
+        checked={terms}
+        onChange={setTerms}
+        error={errors.voorwaarden}
+        errorId="voorwaarden-error"
+      >
+        Ik ga akkoord met de{" "}
+        <a href="/algemene-voorwaarden" className="font-bold text-vivid-indigo underline">
+          algemene voorwaarden
+        </a>
+        .
+      </AgreementCheckbox>
       <Button type="submit" disabled={loading} className="w-full">
         {loading ? "Je wordt doorgestuurd…" : "Doorgaan naar betalen"}
       </Button>

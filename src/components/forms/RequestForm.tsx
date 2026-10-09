@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Field, Consent, inputClass } from "./Field";
+import { Field, Consent, inputClass, selectClass } from "./Field";
 import { requestSchema, fieldErrors } from "@/lib/validation";
 import { licenseCategories } from "@/data/license-categories";
 import { packages } from "@/data/packages";
@@ -172,41 +172,47 @@ export function RequestForm({
         </Field>
         {reserveren && (
           <Field id="categorie" label="Rijbewijs" error={errors.categorie}>
-            <select
-              id="categorie"
-              name="categorie"
-              value={values.categorie}
-              onChange={set("categorie")}
-              className={inputClass}
-              {...aria("categorie")}
-            >
-              <option value="">Nog niet zeker</option>
-              {licenseCategories.map((c) => (
-                <option key={c.slug} value={c.code}>
-                  {c.code} · {c.vehicleType}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                id="categorie"
+                name="categorie"
+                value={values.categorie}
+                onChange={set("categorie")}
+                className={selectClass}
+                {...aria("categorie")}
+              >
+                <option value="">Nog niet zeker</option>
+                {licenseCategories.map((c) => (
+                  <option key={c.slug} value={c.code}>
+                    {c.code} · {c.vehicleType}
+                  </option>
+                ))}
+              </select>
+              <span aria-hidden className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate">⌄</span>
+            </div>
           </Field>
         )}
       </div>
       {reserveren && (
         <Field id="pakket" label="Pakket of prestatie" error={errors.pakket}>
-          <select
-            id="pakket"
-            name="pakket"
-            value={values.pakket}
-            onChange={set("pakket")}
-            className={inputClass}
-            {...aria("pakket")}
-          >
-            <option value="">Nog niet zeker</option>
-            {packages.map((p) => (
-              <option key={p.slug} value={p.name}>
-                {p.name} · {p.priceLabel}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              id="pakket"
+              name="pakket"
+              value={values.pakket}
+              onChange={set("pakket")}
+              className={selectClass}
+              {...aria("pakket")}
+            >
+              <option value="">Nog niet zeker</option>
+              {packages.map((p) => (
+                <option key={p.slug} value={p.name}>
+                  {p.name} · {p.priceLabel}
+                </option>
+              ))}
+            </select>
+            <span aria-hidden className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate">⌄</span>
+          </div>
         </Field>
       )}
       <Field
