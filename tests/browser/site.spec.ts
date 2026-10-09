@@ -188,9 +188,7 @@ test("runtime APIs reject invalid requests", async ({ request }) => {
     expect((await request.post("/api/aanvraag", { data: null })).status()).toBe(
       503,
     );
-    expect((await request.post("/api/checkout", { data: {} })).status()).toBe(
-      503,
-    );
+    expect((await request.post("/api/checkout", { data: {} })).status()).toBe(410);
     return;
   }
   expect((await request.post("/api/aanvraag", { data: null })).status()).toBe(
@@ -203,31 +201,13 @@ test("runtime APIs reject invalid requests", async ({ request }) => {
       })
     ).status(),
   ).toBe(422);
-  expect(
-    (
-      await request.post("/api/checkout", { data: { slug: "beginner" } })
-    ).status(),
-  ).toBe(422);
+  expect((await request.post("/api/checkout", { data: {} })).status()).toBe(410);
 });
 
-test("checkout requires terms and renders service errors", async ({ page }) => {
+test("legacy checkout links return to the request form", async ({ page }) => {
   await page.goto("/bestellen/beginner");
-  await page.locator("#naam").fill("Test Bezoeker");
-  await page.locator("#email").fill("test@example.com");
-  await page.getByRole("checkbox").nth(0).check();
-  await page.getByRole("button", { name: "Doorgaan naar betalen" }).click();
-  await expect(page.locator("#voorwaarden-error")).toBeVisible();
-  await page.route("**/api/checkout", (route) =>
-    route.fulfill({
-      status: 503,
-      json: { error: "Online betalen is nog niet beschikbaar." },
-    }),
-  );
-  await page.getByRole("checkbox").nth(1).check();
-  await page.getByRole("button", { name: "Doorgaan naar betalen" }).click();
-  await expect(page.locator("form").getByRole("alert")).toContainText(
-    "Online betalen is nog niet beschikbaar.",
-  );
+  await expect(page).toHaveURL(/\/reserveren\?pakket=beginner$/);
+  await expect(page.getByRole("heading", { name: "Van aanvraag naar eerste les" })).toBeVisible();
 });
 
 test("request UI handles server success and failure", async ({ page }) => {

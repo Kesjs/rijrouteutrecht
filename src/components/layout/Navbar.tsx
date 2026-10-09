@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { nav, site } from "@/data/site";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
@@ -8,6 +8,7 @@ import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const firstMobileLink = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
@@ -15,6 +16,11 @@ export function Navbar() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+  useEffect(() => {
+    if (!open) return;
+    const frame = window.requestAnimationFrame(() => firstMobileLink.current?.focus());
+    return () => window.cancelAnimationFrame(frame);
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-fog/40 bg-pure-white">
@@ -79,16 +85,19 @@ export function Navbar() {
         aria-label="Navigatie op tablet"
         className="hidden flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-fog/25 px-5 py-3 text-[14px] md:flex xl:hidden"
       >
-        {nav.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            aria-current={pathname === item.href ? "page" : undefined}
-            className="hover:text-vivid-indigo"
-          >
-            {item.label}
-          </Link>
-        ))}
+        {nav.map((item) => {
+          const active = pathname === item.href || pathname.startsWith(item.href + "/");
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={active ? "page" : undefined}
+              className={active ? "font-bold text-vivid-indigo" : "hover:text-vivid-indigo"}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
       </nav>
       <nav
         id="mobiel-menu"
@@ -97,19 +106,24 @@ export function Navbar() {
         className="max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-fog/40 bg-pure-white md:hidden"
       >
         <ul className="mx-auto max-w-[1200px] px-4 py-2">
-          {nav.map((item) => (
-            <li key={item.href}>
+          {nav.map((item, index) => {
+            const active = pathname === item.href || pathname.startsWith(item.href + "/");
+            return <li key={item.href}>
               <Link
                 href={item.href}
+                ref={index === 0 ? firstMobileLink : undefined}
+                aria-current={active ? "page" : undefined}
+                onClick={() => setOpen(false)}
                 className="block py-3 text-[17px] font-medium"
               >
                 {item.label}
               </Link>
             </li>
-          ))}
+          })}
           <li className="py-3">
             <Link
               href="/reserveren"
+              onClick={() => setOpen(false)}
               className="inline-flex w-full justify-center rounded-[7.6px] bg-vivid-indigo px-[19px] py-[11px] font-medium text-pure-white"
             >
               Aanvraag sturen
