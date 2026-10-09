@@ -34,9 +34,9 @@ export function FinalLinks() {
             <Link
               key={link.href}
               href={link.href}
-              className="group grid grid-cols-[0.8fr_1fr] overflow-hidden rounded-[15.2px] border border-fog/40 bg-pure-white"
+              className="group grid grid-cols-1 overflow-hidden rounded-[15.2px] border border-fog/40 bg-pure-white sm:grid-cols-[0.8fr_1fr]"
             >
-              <div className="image-frame relative aspect-[4/3] min-h-44 overflow-hidden">
+              <div className="image-frame relative aspect-[16/9] overflow-hidden sm:aspect-[4/3]">
                 <Image
                   src={link.image}
                   alt={link.alt}
@@ -45,7 +45,7 @@ export function FinalLinks() {
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.035]"
                 />
               </div>
-              <div className="flex flex-col justify-center p-5 sm:p-7">
+              <div className="flex min-w-0 flex-col justify-center p-5 sm:p-7">
                 <h3 className="text-[21px] font-bold">{link.title}</h3>
                 <p className="mt-2 text-slate">{link.text}</p>
                 <span className="mt-5 inline-flex items-center text-sm font-bold text-vivid-indigo">
