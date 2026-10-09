@@ -51,6 +51,20 @@ img {
   max-width: 100%;
 }
 
+::selection {
+  color: var(--color-pure-white);
+  background: var(--color-vivid-indigo);
+}
+
+* {
+  scrollbar-color: var(--color-vivid-indigo) var(--color-frost-gray);
+  scrollbar-width: thin;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
 h1,
 h2,
 h3 {
