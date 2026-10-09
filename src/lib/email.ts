@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { site } from "@/data/site";
 import { createHash } from "node:crypto";
 import { getStore } from "@/lib/store";
@@ -13,10 +14,43 @@ const esc = (s: string) =>
 const from = () => process.env.EMAIL_FROM ?? `${site.name} <${site.email}>`;
 const inbox = () => process.env.EMAIL_TO ?? site.email;
 
+const smtpConfig = () => {
+  const user = process.env.SMTP_USER;
+  const password = process.env.SMTP_PASSWORD;
+  if (!user || !password) return null;
+
+  const port = Number(process.env.SMTP_PORT ?? 465);
+  return {
+    host: process.env.SMTP_HOST ?? "smtp.hostinger.com",
+    port,
+    secure: process.env.SMTP_SECURE
+      ? process.env.SMTP_SECURE === "true"
+      : port === 465,
+    auth: { user, pass: password },
+  };
+};
+
 async function send(
   opts: { to: string; subject: string; html: string; replyTo?: string },
   idempotencyKey: string,
 ) {
+  const smtp = smtpConfig();
+  if (smtp) {
+    try {
+      await nodemailer.createTransport(smtp).sendMail({
+        from: from(),
+        to: opts.to,
+        subject: opts.subject,
+        html: opts.html,
+        replyTo: opts.replyTo,
+      });
+      return { ok: true as const };
+    } catch {
+      console.error("[email] SMTP-verzending mislukt");
+      return { ok: false as const };
+    }
+  }
+
   const key = process.env.RESEND_API_KEY;
   if (!key) {
     console.warn("[email] verzending niet geconfigureerd");
