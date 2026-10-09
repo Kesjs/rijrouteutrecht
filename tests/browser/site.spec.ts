@@ -23,7 +23,7 @@ test("public routes render with one main heading", async ({ page }) => {
   for (const route of routes) {
     const response = await page.goto(route);
     expect(response?.status(), route).toBe(200);
-    await expect(page).toHaveTitle(/Vooruit Rijschool/);
+    await expect(page).toHaveTitle(/Stuurvast Rijschool/);
     await expect(page.locator("h1"), route).toHaveCount(1);
   }
   const missing = await page.goto("/does-not-exist");
