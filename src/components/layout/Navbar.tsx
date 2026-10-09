@@ -23,9 +23,16 @@ export function Navbar() {
     const frame = window.requestAnimationFrame(() => firstMobileLink.current?.focus());
     return () => window.cancelAnimationFrame(frame);
   }, [open]);
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    if (open) document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-fog/40 bg-pure-white">
+    <header data-i18n-scope className="sticky top-0 z-50 border-b border-fog/40 bg-pure-white">
       <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between gap-4 px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-2 font-bold">
           <Image
@@ -109,9 +116,9 @@ export function Navbar() {
         id="mobiel-menu"
         aria-label="Mobiel menu"
         hidden={!open}
-        className="max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-fog/40 bg-pure-white md:hidden"
+        className="fixed inset-x-0 top-[72px] z-40 max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain border-t border-fog/40 bg-pure-white md:hidden"
       >
-        <ul className="mx-auto max-w-[1200px] px-4 py-2">
+        <ul className="mx-auto max-w-[1200px] px-4 py-2 pb-[calc(1rem+env(safe-area-inset-bottom))]">
           {nav.map((item, index) => {
             const active = pathname === item.href || pathname.startsWith(item.href + "/");
             return <li key={item.href}>

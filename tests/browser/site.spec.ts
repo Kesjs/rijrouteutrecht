@@ -180,6 +180,23 @@ test("homepage images load and header pages are reachable at every breakpoint", 
   }
 });
 
+test("language switcher translates the current page and can switch back", async ({
+  page,
+}) => {
+  await page.goto("/rijbewijzen");
+  const switcher = page.locator("header details").first();
+
+  await switcher.locator("summary").click();
+  await switcher.getByRole("option", { name: "Français", exact: true }).click();
+  await expect.poll(() => page.evaluate(() => document.documentElement.lang)).toBe("fr");
+  await expect(page.locator("h1")).toHaveText("Choisissez le permis qui vous convient");
+  await expect(page.locator('header nav a').first()).toHaveText("Permis de conduire");
+
+  await switcher.locator("summary").click();
+  await switcher.getByRole("option", { name: "Nederlands", exact: true }).click();
+  await expect(page.locator("h1")).toHaveText("Kies het rijbewijs dat bij je past");
+});
+
 test("runtime APIs reject invalid requests", async ({ request }) => {
   if (
     process.env.E2E_PRODUCTION === "1" &&

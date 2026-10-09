@@ -30,6 +30,7 @@ export function ButtonLink({
         variant,
         `h-auto whitespace-normal shadow-none ${className}`,
       )}
+      data-i18n-scope
     >
       <Link {...props} />
     </ShadcnButton>
@@ -48,6 +49,7 @@ export function Button({
         variant,
         `h-auto whitespace-normal shadow-none ${className}`,
       )}
+      data-i18n-scope
       {...props}
     />
   );

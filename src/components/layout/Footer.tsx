@@ -3,13 +3,13 @@ import { nav, site } from "@/data/site";
 
 export function Footer() {
   return (
-    <footer className="on-dark bg-midnight-ink text-pure-white">
+    <footer data-i18n-scope className="on-dark bg-midnight-ink text-pure-white">
       <div className="mx-auto grid max-w-[1200px] gap-8 px-4 py-16 md:grid-cols-4">
         <div>
           <p className="font-bold">{site.name}</p>
           <p className="mt-2 text-sm text-soft-violet">{site.address}</p>
           <p className="mt-2 text-sm text-soft-violet">
-            Werkgebied: {site.serviceArea}
+            <span>Werkgebied</span>: {site.serviceArea}
           </p>
         </div>
         <div>

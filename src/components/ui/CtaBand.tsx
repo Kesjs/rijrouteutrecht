@@ -8,7 +8,7 @@ export function CtaBand({
   text?: string;
 }) {
   return (
-    <section className="on-dark bg-midnight-ink py-16 text-pure-white">
+    <section data-i18n-scope className="on-dark bg-midnight-ink py-16 text-pure-white">
       <div className="mx-auto max-w-[1200px] px-4 text-center">
         <h2 className="text-[28px] font-bold leading-[1.2]">{title}</h2>
         <p className="mx-auto mt-2 max-w-lg text-soft-violet">{text}</p>
