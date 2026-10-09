@@ -23,9 +23,14 @@ export function CategoriesPreview() {
             Op onze rijbewijzenpagina vind je alle categorieën, met uitleg over
             de voertuigen, voorwaarden en het verloop van de opleiding.
           </p>
-          <ButtonLink href="/rijbewijzen" variant="ghost" className="mt-7">
-            Ontdek de mogelijkheden
-            <ArrowRightIcon aria-hidden className="ml-2" />
+          <ButtonLink
+            href="/rijbewijzen"
+            variant="ghost"
+            className="group mt-7 border-vivid-indigo/30 hover:border-vivid-indigo hover:bg-pale-lilac/45"
+            aria-label="Bekijk alle rijbewijscategorieën"
+          >
+            Bekijk alle rijbewijzen
+            <ArrowRightIcon aria-hidden className="ml-2 transition-transform duration-200 group-hover:translate-x-1 group-focus-visible:translate-x-1" />
           </ButtonLink>
         </div>
         <Link
