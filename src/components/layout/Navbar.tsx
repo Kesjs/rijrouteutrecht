@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { nav, site } from "@/data/site";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { LanguageSwitcher } from "@/components/i18n/LanguageSwitcher";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -59,6 +60,9 @@ export function Navbar() {
           })}
         </nav>
         <div className="flex items-center gap-2">
+          <div className="hidden sm:block">
+            <LanguageSwitcher />
+          </div>
           <Link
             href="/pakketten"
             className="hidden rounded-[7.6px] bg-vivid-indigo px-[19px] py-[9px] text-[14px] font-medium text-pure-white hover:bg-[#3c3eb3] sm:inline-block"
@@ -128,6 +132,9 @@ export function Navbar() {
             >
               Aanvraag sturen
             </Link>
+          </li>
+          <li>
+            <LanguageSwitcher mobile />
           </li>
         </ul>
       </nav>
