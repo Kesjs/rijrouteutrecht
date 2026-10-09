@@ -30,6 +30,10 @@ export default function OverOnsPage() {
     <main>
       <PageHeader
         eyebrow="Over ons"
+        image={{
+          src: "/images/practice.webp",
+          alt: "Illustratief beeld van begeleiding tijdens een rijles",
+        }}
         title="Een rijschool die je traject overzichtelijk maakt"
         intro="Vooruit Rijschool helpt je in Utrecht stap voor stap naar je rijbewijs, met duidelijke afspraken en persoonlijke begeleiding."
       />

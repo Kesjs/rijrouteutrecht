@@ -11,9 +11,9 @@ export default function HomePage() {
     <main>
       <Hero />
       <CategoriesPreview />
-      <PackagesPreview />
       <ProcessSteps />
       <TheoryBlock />
+      <PackagesPreview />
       <TrustBlock />
       <ContactQuick />
     </main>

@@ -1,6 +1,6 @@
 # Vooruit — système visuel
 
-Site d'auto-école néerlandais : clair, sobre, rassurant, mobile-first. Conserver la direction Shortcut existante et la structure de la landing page.
+Site d'auto-école néerlandais : clair, sobre, rassurant, mobile-first. Conserver les tokens Shortcut ; l'accueil privilégie désormais des scènes de conduite et une hiérarchie éditoriale plus marquée.
 
 - Accent d'action : indigo `#494bcb` ; texte sombre `#08093f`.
 - Fond blanc et sections gris léger `#f6f6fa`.
@@ -10,6 +10,8 @@ Site d'auto-école néerlandais : clair, sobre, rassurant, mobile-first. Conserv
 - Focus clavier visible, contenu accessible, respect de `prefers-reduced-motion`.
 - Pas d'avis, de profils, de chiffres de réussite ou d'historique inventés.
 
-Design Taste appliqué à la qualité et à la cohérence ; aucun changement décoratif de direction n'est nécessaire à la finalisation fonctionnelle.
+Accueil : hero texte/image, catalogue asymétrique avec les sept catégories, parcours de formation illustré, théorie illustrée, forfaits, confiance et contact. Images également présentes en ouverture du catalogue, de la théorie et de la page À propos.
+
+Cinq visuels d'ambiance générés avec ImageGen, compressés en WebP et servis localement par Next Image. Ils ne représentent pas la flotte ou l'équipe réelle. Provenance et prompts : `public/images/PROVENANCE.md`. Hero préchargé ; images des sections chargées à la demande. Navigation complète affichée directement sur ordinateur et tablette ; menu déroulant sur mobile, avec FAQ et demande.
 
 Réglages retenus : variance 4, mouvement 2, densité 4. Le contraste clair/sombre existant pour les sections de confiance et le footer est conservé conformément à la direction déjà choisie.

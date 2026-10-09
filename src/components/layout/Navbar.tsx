@@ -18,7 +18,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-fog/40 bg-pure-white">
-      <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between px-4">
+      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between gap-4 px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-2 font-bold">
           {/* Emplacement logo: remplacer ce bloc par le logo final */}
           <span
@@ -31,7 +31,7 @@ export function Navbar() {
         </Link>
         <nav
           aria-label="Hoofdnavigatie"
-          className="hidden items-center gap-5 text-[14px] lg:flex"
+          className="hidden items-center gap-5 text-[14px] xl:flex"
         >
           {nav.map((item) => {
             const active =
@@ -61,7 +61,7 @@ export function Navbar() {
           </Link>
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-[7.6px] border border-fog lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-[7.6px] border border-fog md:hidden"
             aria-expanded={open}
             aria-controls="mobiel-menu"
             aria-label={open ? "Menu sluiten" : "Menu openen"}
@@ -76,10 +76,25 @@ export function Navbar() {
         </div>
       </div>
       <nav
+        aria-label="Navigatie op tablet"
+        className="hidden flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-fog/25 px-5 py-3 text-[14px] md:flex xl:hidden"
+      >
+        {nav.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            aria-current={pathname === item.href ? "page" : undefined}
+            className="hover:text-vivid-indigo"
+          >
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+      <nav
         id="mobiel-menu"
         aria-label="Mobiel menu"
         hidden={!open}
-        className="border-t border-fog/40 bg-pure-white lg:hidden"
+        className="max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-fog/40 bg-pure-white md:hidden"
       >
         <ul className="mx-auto max-w-[1200px] px-4 py-2">
           {nav.map((item) => (

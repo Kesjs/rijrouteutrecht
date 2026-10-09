@@ -4,6 +4,12 @@
 
 Catalogue de sept catégories et pages détaillées, cinq offres, demande, contact, théorie, à propos, instructeurs en attente de profils, neuf questions FAQ, textes légaux provisoires, 404, récapitulatif, pages de paiement et trois endpoints serveur.
 
+## Refonte visuelle de l'accueil
+
+Hero avec grande image, cinq visuels d'ambiance locaux en WebP et sept sections : introduction, permis, déroulement, théorie, forfaits, confiance et contact. Les sept catégories sont présentes. Catalogue, théorie et À propos disposent aussi d'une ouverture illustrée. Les images générées sont des illustrations, pas la flotte ni l'équipe réelle ; prompts et provenance dans `public/images/PROVENANCE.md`.
+
+Liens du header visibles directement sur ordinateur et tablette, menu mobile accessible au clavier ; FAQ ajoutée. Captures desktop/mobile vérifiées dans `artifacts/`.
+
 ## À fournir ou valider avant publication commerciale
 
 - Logo final, domaine, adresse, téléphone, e-mail, KvK et zone desservie.
@@ -28,7 +34,7 @@ Ces corrections ne constituent pas une validation exhaustive de toutes les condi
 - Build de production réussi : 32 pages générées avec Next.js 16.4.0.
 - TypeScript : aucun diagnostic.
 - 16 tests serveur/e-mails réussis : prix serveur, consentements, erreurs, signatures, paiement différé, retries, concurrence et idempotence.
-- 8 scénarios navigateur vérifiés sur le build de production : 5 réussis lors du premier passage, puis les 3 autres réussis après correction des sélecteurs de test.
+- Après la refonte visuelle : build de production et TypeScript réussis ; 9 scénarios navigateur réussis dans un même passage, dont chargement des six images de l'accueil et visibilité de tous les liens du header à 390, 768 et 1440 px.
 - 21 routes publiques/commande/résultat contrôlées, plus la 404.
 - Absence de débordement horizontal sur 6 pages à 320, 390, 768, 1024 et 1440 px.
 - Contrôle Axe WCAG A/AA sur accueil, FAQ, demande et commande : aucune violation détectée. Cela ne remplace pas un audit manuel exhaustif.

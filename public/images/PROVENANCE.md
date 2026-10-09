@@ -1,0 +1,19 @@
+# Vooruit imagery
+
+Created with the built-in ImageGen tool on 2026-10-09. These are illustrative scenes, not photographs of Vooruit's real vehicles, staff or students. Original PNG files remain in the Codex generated-images folder. Project copies are compressed WebP assets (quality 82), 1536 × 1024 pixels.
+
+## Prompt set
+
+- `hero.webp`: Photorealistic editorial landscape, 3:2. An unbranded silver hatchback on a quiet Utrecht-style canal street with brick houses and trees, a small blue L roof sign. Car on the right. Natural morning light. No logos, additional text or identifiable people. Generic driving-school atmosphere.
+- `practice.webp`: Photorealistic passenger-seat close-up of an unbranded left-hand-drive training car. Adult learner's hands on the steering wheel, instructor's arm offering guidance, no faces. Safely stationary beside a curb on a leafy Dutch residential street. Natural daylight, no logos or text.
+- `theory.webp`: Photorealistic oak study table beside a window. Notebook with junction line sketches, traffic-sign cards, a tablet with a generic junction diagram, pen and water glass. No words, logos or people. Soft natural light, restrained indigo details.
+- `motor.webp`: Photorealistic unbranded dark-blue motorcycle safely parked in a training area with Dutch brick buildings, greenery and traffic cones. Overcast daylight. No people, readable plates or logos. Generic illustrative scene.
+- `scooter.webp`: Photorealistic unbranded silver-blue scooter parked on a Dutch residential path, helmet on the seat, brick houses and trees. Natural light. No people, readable text or logos. Generic illustrative scene.
+
+## Original files
+
+- Hero: `exec-747a57ec-3952-4335-b68e-4a1e5bd54a4f.png`
+- Practice: `exec-ce144f42-746c-4ff0-a10c-8970fda878be.png`
+- Theory: `exec-b661b73e-cc99-4900-ab1f-f55f0f27b837.png`
+- Motor: `exec-9c695310-0b03-48da-9126-e45bfd5ae039.png`
+- Scooter: `exec-7681f75c-7bed-4555-994c-df4e9f506990.png`

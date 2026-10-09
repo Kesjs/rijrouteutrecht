@@ -17,6 +17,10 @@ export default function RijbewijzenPage() {
     <main>
       <PageHeader
         eyebrow="Rijbewijzen"
+        image={{
+          src: "/images/hero.webp",
+          alt: "Illustratief beeld van een lesauto langs een Nederlandse gracht",
+        }}
         title="Kies het rijbewijs dat bij je past"
         intro="Zeven categorieën, één duidelijk overzicht. Klik op een categorie voor voertuigen, voorwaarden en het verloop van de opleiding."
       />

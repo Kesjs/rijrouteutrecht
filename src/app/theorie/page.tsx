@@ -34,6 +34,10 @@ export default function TheoriePage() {
     <main>
       <PageHeader
         eyebrow="Theorie en CBR"
+        image={{
+          src: "/images/theory.webp",
+          alt: "Illustratief beeld van studiemateriaal met verkeerssituaties",
+        }}
         title="Theorie bereidt je voor, het CBR beslist"
         intro="Online leren helpt je voorbereiden, maar het officiële examen leg je altijd af bij het CBR."
       >

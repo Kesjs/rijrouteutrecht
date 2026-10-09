@@ -69,10 +69,59 @@ test("request preselection and client validation", async ({ page }) => {
   await expect(page.locator("#email-error")).toBeVisible();
 });
 
+test("homepage images load and header pages are reachable at every breakpoint", async ({
+  page,
+}) => {
+  const links = [
+    "/rijbewijzen",
+    "/pakketten",
+    "/theorie",
+    "/over-ons",
+    "/instructeurs",
+    "/faq",
+    "/contact",
+  ];
+  for (const width of [390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    if (width === 390)
+      await page.locator('button[aria-controls="mobiel-menu"]').click();
+    for (const href of links) {
+      await expect(
+        page.locator(`header a[href="${href}"]:visible`).first(),
+      ).toBeVisible();
+    }
+    if (width === 390) await page.keyboard.press("Escape");
+    const images = page.locator("main img");
+    expect(await images.count()).toBeGreaterThanOrEqual(6);
+    for (const picture of await images.all()) {
+      await picture.scrollIntoViewIfNeeded();
+      await expect(picture).toHaveJSProperty("complete", true);
+      await expect
+        .poll(() =>
+          picture.evaluate((img: HTMLImageElement) => img.naturalWidth),
+        )
+        .toBeGreaterThan(0);
+    }
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.screenshot({
+      path: `artifacts/home-${width}.png`,
+      fullPage: true,
+    });
+  }
+});
+
 test("runtime APIs reject invalid requests", async ({ request }) => {
-  if (process.env.E2E_PRODUCTION === "1" && !process.env.UPSTASH_REDIS_REST_TOKEN) {
-    expect((await request.post("/api/aanvraag", { data: null })).status()).toBe(503);
-    expect((await request.post("/api/checkout", { data: {} })).status()).toBe(503);
+  if (
+    process.env.E2E_PRODUCTION === "1" &&
+    !process.env.UPSTASH_REDIS_REST_TOKEN
+  ) {
+    expect((await request.post("/api/aanvraag", { data: null })).status()).toBe(
+      503,
+    );
+    expect((await request.post("/api/checkout", { data: {} })).status()).toBe(
+      503,
+    );
     return;
   }
   expect((await request.post("/api/aanvraag", { data: null })).status()).toBe(
@@ -122,7 +171,9 @@ test("request UI handles server success and failure", async ({ page }) => {
   await page.locator("#bericht").fill("Ik wil graag informatie.");
   await page.getByRole("checkbox").check();
   await page.getByRole("button", { name: "Bericht versturen" }).click();
-  await expect(page.locator("form").getByRole("alert")).toContainText("Verzenden mislukt.");
+  await expect(page.locator("form").getByRole("alert")).toContainText(
+    "Verzenden mislukt.",
+  );
   await page.unroute("**/api/aanvraag");
   await page.route("**/api/aanvraag", (route) =>
     route.fulfill({ status: 200, json: { ok: true } }),
