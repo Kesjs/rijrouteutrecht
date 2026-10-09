@@ -17,7 +17,7 @@ Référence fonctionnelle : `Vooruit-cahier-des-charges-complet (1).md`.
 | Nom affiché | À confirmer | Le cahier indique « Vooruit Rijschool », tandis que le projet affiche « Stuurvast Rijschool ». Il faut choisir le nom officiel avant publication. |
 | Adresse | À confirmer | `Stationsplein 12, 3511 ED Utrecht` vient du cahier, mais doit être confirmé par l'auto-école. |
 | Téléphone | À confirmer | Le numéro du cahier est repris dans le projet. Il doit être vérifié avant activation des liens d'appel. |
-| E-mail | À confirmer | Le projet utilise `info@stuurvastutrecht.nl`, différent de l'e-mail du cahier. |
+| E-mail | À confirmer | Le projet utilise désormais `contact@rijrouteutrecht.nl`, à confirmer comme adresse officielle de réception. |
 | KvK | Bloquant avant mise en ligne | `12345678` est une valeur de cadrage et ne doit pas rester si elle n'est pas le vrai numéro KvK. |
 | Horaires | Bloquant avant mise en ligne | Aucun horaire n'est publié tant qu'ils ne sont pas confirmés. |
 
