@@ -2,11 +2,17 @@ import Link from "next/link";
 import type { Package } from "@/data/packages";
 
 export function PackageCard({ pkg }: { pkg: Package }) {
+  const featured = pkg.slug === "beginner";
   return (
-    <div className="flex flex-col rounded-[15.2px] border border-slate bg-pure-white p-[19px]">
-      <p className="text-[19px] font-bold leading-[1.27]">{pkg.name}</p>
+    <div className={`relative flex flex-col rounded-[15.2px] border bg-pure-white p-6 transition-[border-color,transform] duration-200 hover:-translate-y-0.5 ${featured ? "border-vivid-indigo/70 ring-1 ring-vivid-indigo/15" : "border-fog/60"}`}>
+      {featured && (
+        <span className="absolute right-5 top-5 rounded-full bg-pale-lilac px-3 py-1 text-[12px] font-bold text-vivid-indigo">
+          Meest gekozen
+        </span>
+      )}
+      <p className={`max-w-[15rem] text-[19px] font-bold leading-[1.27] ${featured ? "pr-24" : ""}`}>{pkg.name}</p>
       <p className="mt-1 text-slate">{pkg.description}</p>
-      <p className="mt-4 text-[28px] font-bold leading-none">
+      <p className="mt-5 text-[32px] font-bold leading-none tracking-[-0.03em]">
         {pkg.priceLabel}
       </p>
       <p className="mt-1 text-[13px] text-slate">
@@ -38,7 +44,7 @@ export function PackageCard({ pkg }: { pkg: Package }) {
         ) : (
           <Link
             href={`/reserveren?pakket=${pkg.slug}`}
-            className="inline-flex w-full items-center justify-center rounded-[7.6px] border border-graphite px-[19px] py-[11px] font-medium hover:bg-frost-gray"
+            className="inline-flex w-full items-center justify-center rounded-[7.6px] border border-fog px-[19px] py-[11px] font-medium transition-colors hover:border-vivid-indigo hover:bg-pale-lilac/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vivid-indigo focus-visible:ring-offset-2"
           >
             Vraag dit pakket aan
           </Link>

@@ -21,3 +21,5 @@ Created with the built-in ImageGen tool on 2026-10-09. These are illustrative sc
 - Theory: `exec-b661b73e-cc99-4900-ab1f-f55f0f27b837.png`
 - Motor: `exec-9c695310-0b03-48da-9126-e45bfd5ae039.png`
 - Scooter: `exec-7681f75c-7bed-4555-994c-df4e9f506990.png`
+
+- categories.webp — generated with OpenAI ImageGen, 2026-10-09. Prompt: Editorial photography for a Dutch driving school website showing a calm training yard with a learner car, scooter, motorcycle, van with trailer and coach bus, no logos/text, wide composition with negative space.

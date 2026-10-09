@@ -115,7 +115,7 @@ export function RequestForm({
   const reserveren = variant === "reservering";
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-5">
+    <form onSubmit={onSubmit} noValidate className="space-y-6" aria-busy={status === "loading"}>
       <div
         ref={summary}
         tabIndex={-1}
@@ -130,6 +130,10 @@ export function RequestForm({
           </div>
         )}
       </div>
+      <p className="text-[14px] text-slate">
+        Vul je gegevens in; velden met een * zijn verplicht. We gebruiken je
+        gegevens alleen om je aanvraag te beantwoorden.
+      </p>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="naam" label="Naam" error={errors.naam} required>
           <input

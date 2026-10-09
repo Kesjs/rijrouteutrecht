@@ -1,5 +1,5 @@
 export const inputClass =
-  "w-full rounded-[7.6px] border border-slate bg-pure-white px-3 py-[10px] text-[15px] placeholder:text-fog aria-[invalid=true]:border-error";
+  "min-h-11 w-full rounded-[7.6px] border border-fog bg-pure-white px-3 py-[10px] text-[15px] placeholder:text-fog transition-[border-color,box-shadow] focus:border-vivid-indigo focus:outline-none focus:ring-2 focus:ring-vivid-indigo/20 aria-[invalid=true]:border-error";
 
 export function Field({
   id,
@@ -17,7 +17,7 @@ export function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div className="space-y-0.5">
       <label htmlFor={id} className="mb-1 block text-[14px] font-bold">
         {label}
         {required ? (
