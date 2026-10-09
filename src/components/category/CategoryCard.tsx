@@ -38,7 +38,7 @@ export function CategoryCard({ cat }: { cat: LicenseCategory }) {
             <CategoryGlyph slug={cat.slug} />
           </svg>
         </span>
-        <div className="text-right">
+        <div className="flex shrink-0 flex-col items-end gap-2 text-right">
           <span className="text-[12px] font-bold uppercase tracking-[0.08em] text-vivid-indigo">{cat.code}</span>
           <IndicativeBadge />
         </div>
