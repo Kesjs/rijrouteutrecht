@@ -77,7 +77,7 @@ export default function InstructeursPage() {
       <Section>
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div className="image-frame relative aspect-[4/3] overflow-hidden rounded-[15.2px] md:order-2">
-            <Image src="/images/contact.webp" alt="Notitieboek en autosleutels voor het plannen van een rijles" fill sizes="(max-width: 767px) 100vw, 560px" className="object-cover" />
+            <Image src="/images/instructor-planning.webp" alt="Instructeur en leerling bespreken samen een route" fill sizes="(max-width: 767px) 100vw, 560px" className="object-cover" />
           </div>
           <div className="md:order-1">
             <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-vivid-indigo">Een goede match</p>

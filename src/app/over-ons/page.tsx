@@ -87,7 +87,7 @@ export default function OverOnsPage() {
             <p className="mt-3 text-slate">Wil je weten of jouw woonplaats binnen de planning past? Stuur je postcode mee met je aanvraag.</p>
           </div>
           <div className="image-frame relative aspect-[4/3] overflow-hidden rounded-[15.2px]">
-            <Image src="/images/categories.webp" alt="Voertuigen op een rustig oefenterrein" fill sizes="(max-width: 767px) 100vw, 560px" className="object-cover" />
+            <Image src="/images/about-city.webp" alt="Rustige Utrechtse straat met fietspad en kruispunt" fill sizes="(max-width: 767px) 100vw, 560px" className="object-cover" />
           </div>
         </div>
       </Section>

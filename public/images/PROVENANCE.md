@@ -23,3 +23,7 @@ Created with the built-in ImageGen tool on 2026-10-09. These are illustrative sc
 - Scooter: `exec-7681f75c-7bed-4555-994c-df4e9f506990.png`
 
 - categories.webp — generated with OpenAI ImageGen, 2026-10-09. Prompt: Editorial photography for a Dutch driving school website showing a calm training yard with a learner car, scooter, motorcycle, van with trailer and coach bus, no logos/text, wide composition with negative space.
+
+- theory-practice.webp — generated with OpenAI ImageGen, 2026-10-09. Prompt: learner car practice lesson viewed from inside the car, instructor pointing at a road situation, no logos/text.
+- about-city.webp — generated with OpenAI ImageGen, 2026-10-09. Prompt: calm Utrecht-like residential street with bicycle lane, road markings and intersection from learner car perspective, no logos/text.
+- instructor-planning.webp — generated with OpenAI ImageGen, 2026-10-09. Prompt: instructor and learner reviewing a route map and lesson notes beside car keys, no visible faces/logos/text.

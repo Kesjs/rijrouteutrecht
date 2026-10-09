@@ -102,7 +102,7 @@ export default function TheoriePage() {
       <Section tone="gray">
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div className="image-frame relative aspect-[4/3] overflow-hidden rounded-[15.2px]">
-            <Image src="/images/practice.webp" alt="Instructeur en leerling tijdens een praktijkles" fill sizes="(max-width: 767px) 100vw, 560px" className="object-cover" />
+            <Image src="/images/theory-practice.webp" alt="Instructeur en leerling tijdens een praktijkles" fill sizes="(max-width: 767px) 100vw, 560px" className="object-cover" />
           </div>
           <div>
             <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-vivid-indigo">Theorie naar praktijk</p>
