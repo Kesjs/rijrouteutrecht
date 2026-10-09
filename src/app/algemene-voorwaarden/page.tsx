@@ -27,11 +27,11 @@ export default function VoorwaardenPage() {
         rijbewijs en kan het slagen voor een examen niet garanderen. Examens en
         de uitgifte van het rijbewijs lopen via het CBR en de gemeente.
       </p>
-      <h2>Bestellen en betalen</h2>
+      <h2>Aanvraag en planning</h2>
       <p>
-        Je betaalt het pakket in één keer via Stripe. Na betaling ontvang je een
-        bevestiging per e-mail en nemen wij contact met je op om de lessen in te
-        plannen.
+        Een aanvraag via de website is geen definitieve reservering. Na ontvangst
+        van je formulier nemen wij contact met je op om de lessen, planning en
+        betalingsafspraken te bevestigen.
       </p>
       <h2>Annuleren en restitutie</h2>
       <p>

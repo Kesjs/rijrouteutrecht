@@ -9,7 +9,7 @@ export type Package = {
   duration: string;
   includes: string[];
   note?: string;
-  /** true = bouton de paiement Stripe; false = demande via /reserveren */
+  /** Kept for data compatibility; all packages now go through /reserveren. */
   payable: boolean;
   /** Explicitly confirmed categories. Empty means category-specific pricing is still on request. */
   categorySlugs?: string[];
@@ -27,7 +27,7 @@ const raw: Omit<Package, "priceLabel">[] = [
       "Fysiek, met een instructeur",
       "Prijs inclusief btw",
     ],
-    payable: true,
+    payable: false,
   },
   {
     slug: "beginner",
@@ -40,7 +40,7 @@ const raw: Omit<Package, "priceLabel">[] = [
       "Vast aanspreekpunt bij Stuurvast",
       "Lessen op een tempo dat bij je past",
     ],
-    payable: true,
+    payable: false,
   },
   {
     slug: "spoedcursus",
@@ -53,7 +53,7 @@ const raw: Omit<Package, "priceLabel">[] = [
       "Intensief traject met korte tussenpozen",
       "Voorbereiding op het CBR-examen",
     ],
-    payable: true,
+    payable: false,
   },
   {
     slug: "cbr-examen",
@@ -78,7 +78,7 @@ const raw: Omit<Package, "priceLabel">[] = [
       "Begeleiding bij zenuwen voor het examen",
       "Praktische technieken voor de examendag",
     ],
-    payable: true,
+    payable: false,
   },
 ];
 

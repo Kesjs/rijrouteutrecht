@@ -3,7 +3,7 @@ import type { FaqItem } from "./license-categories";
 export const faq: FaqItem[] = [
   {
     q: "Hoe begin ik met een opleiding?",
-    a: "Kies het rijbewijs dat je wilt halen en bekijk de pakketten. Je kunt direct een pakket bestellen of eerst een aanvraag sturen. Daarna nemen wij contact met je op.",
+    a: "Kies het rijbewijs dat je wilt halen en bekijk de pakketten. Stuur daarna je aanvraag via het formulier. Daarna nemen wij contact met je op.",
   },
   {
     q: "Wat is het verschil tussen een les en een pakket?",
@@ -11,7 +11,7 @@ export const faq: FaqItem[] = [
   },
   {
     q: "Zijn de praktijklessen online?",
-    a: "Nee. De praktijklessen vinden altijd fysiek plaats met een instructeur. Online regelen we alleen informatie, bestellen en betalen.",
+    a: "Nee. De praktijklessen vinden altijd fysiek plaats met een instructeur. Online regelen we alleen informatie en je aanvraag.",
   },
   {
     q: "Hoe werkt de theorie?",
@@ -22,12 +22,12 @@ export const faq: FaqItem[] = [
     a: "Prijzen per rijbewijs zijn richtprijzen op basis van de Nederlandse markt. De prijzen van onze pakketten staan vast en zijn inclusief btw.",
   },
   {
-    q: "Is betalen veilig?",
-    a: "Ja. Betalen gaat via Stripe. Wij zien en bewaren je bankgegevens nooit.",
+    q: "Wanneer betaal ik voor de lessen?",
+    a: "Na je aanvraag nemen we contact met je op om de lessen, planning en betalingsafspraken te bespreken.",
   },
   {
-    q: "Wat gebeurt er na mijn betaling?",
-    a: "Je krijgt direct een bevestiging per e-mail. Daarna neemt Stuurvast contact met je op om je lessen in te plannen.",
+    q: "Wat gebeurt er na mijn aanvraag?",
+    a: "Je krijgt een bevestiging per e-mail. Daarna neemt Stuurvast contact met je op om je vragen en lessen te bespreken.",
   },
   {
     q: "Kan ik een spoedcursus volgen?",

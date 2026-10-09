@@ -8,7 +8,7 @@ import { packages } from "@/data/packages";
 export const metadata: Metadata = {
   title: "Pakketten en tarieven",
   description:
-    "Losse rijles, Pakket Beginner, Pakket Spoedcursus, CBR-examen en Faalangsttraining. Vaste prijzen, veilig betalen met Stripe.",
+    "Losse rijles, Pakket Beginner, Pakket Spoedcursus, CBR-examen en Faalangsttraining. Kies een formule en stuur een aanvraag naar Stuurvast.",
 };
 
 export default function PakkettenPage() {
@@ -21,7 +21,7 @@ export default function PakkettenPage() {
           alt: "Illustratief beeld van een planning voor rijlessen met autosleutels",
         }}
         title="Van een losse les tot een volledige spoedcursus"
-        intro="Onze pakketten hebben een vaste prijs, inclusief btw. Bestel direct online of stuur eerst een aanvraag."
+        intro="Onze pakketten hebben een richtprijs, inclusief btw. Kies een formule en stuur je aanvraag; we nemen daarna persoonlijk contact met je op."
       />
       <Section tone="gray">
         <div className="mb-10 max-w-2xl">
@@ -67,7 +67,7 @@ export default function PakkettenPage() {
                 ["Lesduur", "60 minuten", "10 × 60 minuten", "Ongeveer 20 lessen"],
                 ["Tempo", "Flexibel", "Op jouw tempo", "Intensief, korte tussenpozen"],
                 ["Begeleiding", "Instructeur", "Vast aanspreekpunt", "Voorbereiding op CBR-examen"],
-                ["Betaling", "Direct online", "Direct online", "Direct online"],
+                ["Vervolg", "Aanvraag sturen", "Aanvraag sturen", "Aanvraag sturen"],
               ].map(([label, ...cells]) => (
                 <tr key={label} className="border-b border-fog/30 last:border-0">
                   <th scope="row" className="px-5 py-4 font-bold">{label}</th>
@@ -78,28 +78,28 @@ export default function PakkettenPage() {
           </table>
         </div>
       </Section>
-      <Section title="Voorwaarden bij je bestelling">
+      <Section title="Hoe gaat het verder na je aanvraag?">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <h3 className="font-bold">Betalen</h3>
+            <h3 className="font-bold">Aanvraag versturen</h3>
             <p className="mt-1 text-slate">
-              Je betaalt het hele pakket in één keer en veilig via Stripe.
-              Stuurvast ziet en bewaart je bankgegevens niet.
+              Kies een pakket en vul het formulier in. Je aanvraag komt rechtstreeks
+              bij Stuurvast terecht.
             </p>
           </div>
           <div>
-            <h3 className="font-bold">Na je betaling</h3>
+            <h3 className="font-bold">Na je aanvraag</h3>
             <p className="mt-1 text-slate">
-              Je krijgt direct een bevestiging per e-mail. Daarna nemen we
-              contact met je op om je lessen in te plannen.
+              Je ontvangt een bevestiging per e-mail. Daarna nemen we contact
+              met je op om je vragen, beschikbaarheid en startmoment te bespreken.
             </p>
           </div>
           <div>
             <h3 className="font-bold">Wat je niet betaalt</h3>
             <p className="mt-1 text-slate">
               Het officiële examengeld van het CBR en de aanvraag van je
-              rijbewijs bij de gemeente vallen buiten deze pakketten, tenzij het
-              pakket anders vermeldt.
+              rijbewijs bij de gemeente vallen buiten deze richtprijzen, tenzij
+              we dat samen anders afspreken.
             </p>
           </div>
         </div>
@@ -114,11 +114,11 @@ export default function PakkettenPage() {
           .
         </p>
       </Section>
-      <Section tone="gray" title="Na je bestelling" intro="Zo verloopt het praktische vervolg nadat je een pakket hebt gekozen.">
+      <Section tone="gray" title="Na je aanvraag" intro="Zo verloopt het praktische vervolg nadat je een pakket hebt gekozen.">
         <ol className="grid gap-4 md:grid-cols-3">
           {[
             ["1", "Gegevens invullen", "Controleer je naam, e-mailadres en telefoonnummer voordat je verdergaat."],
-            ["2", "Veilig betalen", "Je wordt doorgestuurd naar Stripe. Stuurvast ontvangt geen bankgegevens."],
+            ["2", "We nemen contact op", "We bespreken je ervaring, voorkeuren en de beschikbare momenten."],
             ["3", "Samen inplannen", "Na de bevestiging nemen we contact op om beschikbaarheid en startmoment te bespreken."],
           ].map(([number, title, text]) => (
             <li key={number} className="rounded-[15.2px] border border-fog/60 bg-pure-white p-6">
@@ -151,3 +151,4 @@ export default function PakkettenPage() {
     </main>
   );
 }
+

@@ -8,7 +8,7 @@ import { faq } from "@/data/faq";
 export const metadata: Metadata = {
   title: "Veelgestelde vragen",
   description:
-    "Antwoorden op de meest gestelde vragen over lessen, pakketten, theorie, betalen en examens bij Stuurvast Rijschool.",
+    "Antwoorden op de meest gestelde vragen over lessen, pakketten, theorie, aanvragen en examens bij Stuurvast Rijschool.",
 };
 
 export default function FaqPage() {

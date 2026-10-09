@@ -88,34 +88,13 @@ beforeEach(() => {
 });
 
 describe("commercial boundaries", () => {
-  it("returns a service error if shared rate limiting is unavailable", async () => {
-    mocks.rateLimit.mockResolvedValue(null);
-    expect((await checkout(makeRequest(payload))).status).toBe(503);
-    expect((await request(makeRequest(null))).status).toBe(503);
-  });
-  it("rejects excessive submissions", async () => {
-    mocks.rateLimit.mockResolvedValue(false);
-    expect((await checkout(makeRequest(payload))).status).toBe(429);
-  });
-  it("ignores a browser-supplied price and uses the central server price", async () => {
-    expect(
-      (await checkout(makeRequest({ ...payload, priceCents: 1 }))).status,
-    ).toBe(200);
-    expect(
-      mocks.create.mock.calls[0][0].line_items[0].price_data.unit_amount,
-    ).toBe(52500);
-    expect(mocks.create.mock.calls[0][1].idempotencyKey).toContain("checkout/");
-  });
-  it("blocks purchase without accepted terms", async () => {
-    expect(
-      (await checkout(makeRequest({ ...payload, voorwaarden: false }))).status,
-    ).toBe(422);
+  it("keeps online checkout disabled for the request-first launch", async () => {
+    expect((await checkout()).status).toBe(410);
     expect(mocks.create).not.toHaveBeenCalled();
   });
-  it("blocks an offer that cannot be paid online", async () => {
-    expect(
-      (await checkout(makeRequest({ ...payload, slug: "cbr-examen" }))).status,
-    ).toBe(400);
+  it("returns a service error if shared rate limiting is unavailable", async () => {
+    mocks.rateLimit.mockResolvedValue(null);
+    expect((await request(makeRequest(null))).status).toBe(503);
   });
   it("handles null request JSON without crashing", async () => {
     expect((await request(makeRequest(null))).status).toBe(400);

@@ -34,21 +34,12 @@ export function PackageCard({ pkg }: { pkg: Package }) {
         </p>
       )}
       <div className="mt-auto pt-6">
-        {pkg.payable ? (
-          <Link
-            href={`/bestellen/${pkg.slug}`}
-            className="inline-flex w-full items-center justify-center rounded-[7.6px] bg-vivid-indigo px-[19px] py-[11px] font-medium text-pure-white hover:bg-[#3c3eb3]"
-          >
-            Bestel en betaal
-          </Link>
-        ) : (
-          <Link
-            href={`/reserveren?pakket=${pkg.slug}`}
-            className="inline-flex w-full items-center justify-center rounded-[7.6px] border border-fog px-[19px] py-[11px] font-medium transition-colors hover:border-vivid-indigo hover:bg-pale-lilac/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vivid-indigo focus-visible:ring-offset-2"
-          >
-            Vraag dit pakket aan
-          </Link>
-        )}
+        <Link
+          href={`/reserveren?pakket=${pkg.slug}`}
+          className="inline-flex w-full items-center justify-center rounded-[7.6px] bg-vivid-indigo px-[19px] py-[11px] font-medium text-pure-white hover:bg-[#3c3eb3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vivid-indigo focus-visible:ring-offset-2"
+        >
+          Vraag dit pakket aan
+        </Link>
       </div>
     </div>
   );
