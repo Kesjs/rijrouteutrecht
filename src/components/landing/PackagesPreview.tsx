@@ -1,47 +1,29 @@
-import Link from "next/link";
-import { packages } from "@/data/packages";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { ButtonLink } from "@/components/ui/Button";
 
 export function PackagesPreview() {
   return (
-    <section className="bg-pure-white py-16">
-      <div className="mx-auto max-w-[1200px] px-4">
-        <h2 className="text-[32px] font-bold tracking-[-0.035em] sm:text-[42px]">
-          Een duidelijk plan. Inzicht in de prijs.
-        </h2>
-        <p className="mt-1 text-slate">
-          Van een losse les tot een volledige spoedcursus.
-        </p>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {packages.slice(0, 3).map((pkg) => (
-            <div
-              key={pkg.slug}
-              className={`flex flex-col rounded-[15.2px] border p-6 ${pkg.slug === "beginner" ? "border-vivid-indigo bg-pale-lilac/35" : "border-fog/40"}`}
-            >
-              <p className="font-bold">{pkg.name}</p>
-              <p className="mt-2 text-sm text-slate">{pkg.description}</p>
-              <p className="mt-6 text-[32px] font-bold tracking-[-0.03em]">
-                {pkg.priceLabel}
-              </p>
-              <p className="mt-1 text-[13px] text-slate">
-                {pkg.duration}, inclusief btw
-              </p>
-              <ButtonLink
-                href={`/bestellen/${pkg.slug}`}
-                variant={pkg.slug === "beginner" ? "primary" : "ghost"}
-                className="mt-7 w-full"
-              >
-                Bekijk dit pakket
-              </ButtonLink>
-            </div>
-          ))}
+    <section className="bg-frost-gray py-16 lg:py-20">
+      <div className="mx-auto grid max-w-[1280px] items-center gap-8 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        <div>
+          <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-vivid-indigo">
+            Een traject dat bij je past
+          </p>
+          <h2 className="mt-4 max-w-xl text-[32px] font-bold leading-[1.1] tracking-[-0.035em] sm:text-[42px]">
+            Leren op jouw tempo.
+          </h2>
         </div>
-        <Link
-          href="/pakketten"
-          className="mt-6 inline-block text-sm font-bold text-vivid-indigo"
-        >
-          Alle pakketten en prijzen →
-        </Link>
+        <div>
+          <p className="max-w-lg text-[16px] leading-relaxed text-slate">
+            Begin je net, wil je verder oefenen of zoek je een intensiever
+            traject? Bekijk de lesmogelijkheden en wat er bij ieder pakket
+            hoort.
+          </p>
+          <ButtonLink href="/pakketten" variant="ghost" className="mt-6">
+            Bekijk de lesmogelijkheden
+            <ArrowRightIcon aria-hidden className="ml-2" />
+          </ButtonLink>
+        </div>
       </div>
     </section>
   );

@@ -57,9 +57,9 @@ export function Hero() {
           </p>
           <p>
             <span className="font-bold text-midnight-ink">
-              Duidelijke richtprijzen
+              Persoonlijke begeleiding
             </span>
-            <span className="ml-2 text-slate">Vooraf inzicht</span>
+            <span className="ml-2 text-slate">Stap voor stap</span>
           </p>
           <p>
             <span className="font-bold text-midnight-ink">

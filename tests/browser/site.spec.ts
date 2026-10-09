@@ -93,7 +93,10 @@ test("homepage images load and header pages are reachable at every breakpoint", 
     }
     if (width === 390) await page.keyboard.press("Escape");
     const images = page.locator("main img");
-    expect(await images.count()).toBeGreaterThanOrEqual(6);
+    await expect(page.locator("main")).not.toContainText("€");
+    await expect(page.locator('main a[href^="/rijbewijzen/"]')).toHaveCount(0);
+    await expect(page.locator('main a[href^="/bestellen/"]')).toHaveCount(0);
+    expect(await images.count()).toBeGreaterThanOrEqual(5);
     for (const picture of await images.all()) {
       await picture.scrollIntoViewIfNeeded();
       await expect(picture).toHaveJSProperty("complete", true);

@@ -1,7 +1,7 @@
 const points = [
   {
-    title: "Transparante prijzen",
-    body: "Elke richtprijs duidelijk gelabeld, geen verborgen kosten.",
+    title: "Duidelijke afspraken",
+    body: "We bespreken vooraf wat je traject inhoudt.",
   },
   {
     title: "Fysieke lessen",
