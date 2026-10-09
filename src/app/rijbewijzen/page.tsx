@@ -25,7 +25,7 @@ export default function RijbewijzenPage() {
         intro="Zeven categorieën, één duidelijk overzicht. Klik op een categorie voor voertuigen, voorwaarden en het verloop van de opleiding."
       />
       <Section tone="gray">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {licenseCategories.map((c) => (
             <CategoryCard key={c.slug} cat={c} />
           ))}

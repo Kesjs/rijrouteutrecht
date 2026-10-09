@@ -29,14 +29,14 @@ export default function PakkettenPage() {
           <h2 className="mt-3 text-[28px] font-bold leading-tight md:text-[34px]">Een pakket dat past bij jouw manier van leren</h2>
           <p className="mt-3 text-slate">Begin rustig met één les, kies een vast aantal lessen of vraag begeleiding rond je examen. Je hoeft vandaag nog niet precies te weten hoeveel lessen je nodig hebt.</p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {packages.map((p) => (
             <PackageCard key={p.slug} pkg={p} />
           ))}
         </div>
       </Section>
       <Section tone="white" title="Welk traject past bij je?" intro="Gebruik deze drie situaties als eerste oriëntatie. Tijdens de intake kunnen we je keuze bijstellen.">
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-3">
           {[
             ["Ik wil eerst proberen", "Start met een losse les en ontdek waar je staat. Daarna kun je gericht beslissen over een pakket.", "Losse rijles"],
             ["Ik wil een stevige basis", "Met Pakket Beginner krijg je tien lessen om rustig routine op te bouwen en je volgende stap te bepalen.", "Pakket Beginner"],

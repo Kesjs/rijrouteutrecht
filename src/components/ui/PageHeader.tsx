@@ -17,11 +17,11 @@ export function PageHeader({
   return (
     <header className="dot-grid border-b border-fog/40 bg-pure-white">
       <div
-        className={`mx-auto max-w-[1200px] px-4 py-14 md:py-20 ${image ? "grid items-center gap-10 lg:grid-cols-2" : ""}`}
+        className={`mx-auto max-w-[1200px] px-4 py-12 sm:px-6 md:py-20 ${image ? "grid items-center gap-12 lg:grid-cols-2 lg:gap-16" : ""}`}
       >
         <div>
           {eyebrow && <EyebrowBadge>{eyebrow}</EyebrowBadge>}
-          <h1 className="mt-4 max-w-3xl text-[34px] font-bold leading-[1.15] md:text-[46px] md:leading-[1.1]">
+          <h1 className="mt-4 max-w-2xl text-[34px] font-bold leading-[1.15] md:text-[46px] md:leading-[1.1]">
             {title}
           </h1>
           {intro && (
@@ -32,7 +32,7 @@ export function PageHeader({
           )}
         </div>
         {image && (
-          <div className="image-frame relative aspect-[4/3] overflow-hidden rounded-[15.2px]">
+          <div className="image-frame relative min-h-[260px] aspect-[4/3] overflow-hidden rounded-[15.2px] lg:min-h-0">
             <Image
               src={image.src}
               alt={image.alt}
