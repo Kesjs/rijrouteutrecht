@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { nav, site } from "@/data/site";
@@ -27,13 +28,14 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-fog/40 bg-pure-white">
       <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between gap-4 px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-2 font-bold">
-          {/* Emplacement logo: remplacer ce bloc par le logo final */}
-          <span
-            className="flex h-8 w-8 items-center justify-center rounded-[7.6px] bg-vivid-indigo text-sm text-pure-white"
-            aria-hidden
-          >
-            S
-          </span>
+          <Image
+            src="/brand/stuurvast-logo-mark.png"
+            alt=""
+            width={40}
+            height={40}
+            priority
+            className="h-10 w-10 object-contain"
+          />
           <span>{site.name}</span>
         </Link>
         <nav
