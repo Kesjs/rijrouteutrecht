@@ -25,6 +25,10 @@ export default function FaqPage() {
     <main>
       <PageHeader
         eyebrow="FAQ"
+        image={{
+          src: "/images/faq.webp",
+          alt: "Illustratief beeld van een rijlesgesprek met notities en verkeersmateriaal",
+        }}
         title="Veelgestelde vragen"
         intro="Staat je vraag er niet bij? Stuur ons een bericht."
       />

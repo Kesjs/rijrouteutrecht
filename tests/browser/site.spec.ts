@@ -140,8 +140,6 @@ test("homepage images load and header pages are reachable at every breakpoint", 
     "/theorie",
     "/over-ons",
     "/instructeurs",
-    "/faq",
-    "/contact",
   ];
   for (const width of [390, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
@@ -153,6 +151,12 @@ test("homepage images load and header pages are reachable at every breakpoint", 
         page.locator(`header a[href="${href}"]:visible`).first(),
       ).toBeVisible();
     }
+    await expect(
+      page.locator('main a[href="/faq"]:visible').first(),
+    ).toBeVisible();
+    await expect(
+      page.locator('main a[href="/contact"]:visible').first(),
+    ).toBeVisible();
     if (width === 390) await page.keyboard.press("Escape");
     const images = page.locator("main img");
     await expect(page.locator("main")).not.toContainText("€");

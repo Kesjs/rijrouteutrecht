@@ -22,8 +22,6 @@ export const nav = [
   { label: "Theorie", href: "/theorie" },
   { label: "Over ons", href: "/over-ons" },
   { label: "Instructeurs", href: "/instructeurs" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const priceDisclaimer =

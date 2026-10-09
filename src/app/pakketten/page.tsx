@@ -16,6 +16,10 @@ export default function PakkettenPage() {
     <main>
       <PageHeader
         eyebrow="Pakketten"
+        image={{
+          src: "/images/packages.webp",
+          alt: "Illustratief beeld van een planning voor rijlessen met autosleutels",
+        }}
         title="Van een losse les tot een volledige spoedcursus"
         intro="Onze pakketten hebben een vaste prijs, inclusief btw. Bestel direct online of stuur eerst een aanvraag."
       />

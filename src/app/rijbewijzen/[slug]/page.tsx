@@ -42,6 +42,15 @@ export default async function CategoryPage({ params }: Props) {
     <main>
       <PageHeader
         eyebrow={`Rijbewijs ${cat.code}`}
+        image={{
+          src:
+            cat.slug === "am"
+              ? "/images/scooter.webp"
+              : cat.slug === "a"
+                ? "/images/motor.webp"
+                : "/images/hero.webp",
+          alt: `Illustratief beeld passend bij rijbewijs ${cat.code}`,
+        }}
         title={cat.vehicleType}
         intro={cat.summary}
       >

@@ -15,6 +15,10 @@ export default function InstructeursPage() {
     <main>
       <PageHeader
         eyebrow="Instructeurs"
+        image={{
+          src: "/images/instructors.webp",
+          alt: "Illustratief beeld van instructeurs die een route bespreken bij een lesauto",
+        }}
         title="De mensen naast je in de auto"
         intro="Je volgt de praktijklessen altijd samen met een instructeur."
       />

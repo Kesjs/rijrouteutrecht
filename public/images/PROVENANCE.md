@@ -9,6 +9,10 @@ Created with the built-in ImageGen tool on 2026-10-09. These are illustrative sc
 - `theory.webp`: Photorealistic oak study table beside a window. Notebook with junction line sketches, traffic-sign cards, a tablet with a generic junction diagram, pen and water glass. No words, logos or people. Soft natural light, restrained indigo details.
 - `motor.webp`: Photorealistic unbranded dark-blue motorcycle safely parked in a training area with Dutch brick buildings, greenery and traffic cones. Overcast daylight. No people, readable plates or logos. Generic illustrative scene.
 - `scooter.webp`: Photorealistic unbranded silver-blue scooter parked on a Dutch residential path, helmet on the seat, brick houses and trees. Natural light. No people, readable text or logos. Generic illustrative scene.
+- `faq.webp`: Editorial photorealistic scene of a calm driving-school conversation with a learner and instructor seen from behind, road map, notebook and small traffic sign. No readable text, logos or identifiable faces.
+- `contact.webp`: Editorial photorealistic scene with a phone, notebook, car keys and coffee on a bright desk beside a quiet Dutch street. No readable text, logos or people.
+- `packages.webp`: Editorial photorealistic scene of a driving lesson notebook, calendar, car keys and pen on a clean table. Soft natural daylight, no readable text or logos.
+- `instructors.webp`: Editorial photorealistic scene of two generic instructors seen from behind discussing a route on a clipboard beside an unbranded training car. No faces, logos or readable text; not a real staff portrait.
 
 ## Original files
 

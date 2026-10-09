@@ -14,6 +14,10 @@ export default function ContactPage() {
     <main>
       <PageHeader
         eyebrow="Contact"
+        image={{
+          src: "/images/contact.webp",
+          alt: "Illustratief beeld van een telefoon, notitieboek en autosleutels op een bureau",
+        }}
         title="Neem contact met ons op"
         intro="Bel, mail of stuur een bericht. We reageren zo snel mogelijk."
       />
