@@ -38,7 +38,7 @@ export function Hero() {
             </p>
           </div>
         </div>
-        <div className="image-frame relative aspect-[5/4] overflow-hidden rounded-[15.2px] bg-frost-gray lg:aspect-[6/5]">
+        <div className="hero-media image-frame relative aspect-[5/4] overflow-hidden rounded-[15.2px] bg-frost-gray lg:aspect-[6/5]">
           <Image
             src="/images/hero.webp"
             alt="Illustratief beeld van een lesauto langs een Nederlandse gracht"
