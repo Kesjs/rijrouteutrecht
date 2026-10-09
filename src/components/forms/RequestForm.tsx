@@ -1,0 +1,255 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/Button";
+import { Field, Consent, inputClass } from "./Field";
+import { requestSchema, fieldErrors } from "@/lib/validation";
+import { licenseCategories } from "@/data/license-categories";
+import { packages } from "@/data/packages";
+import { site } from "@/data/site";
+
+type Status = "idle" | "loading" | "success" | "error";
+
+export function RequestForm({
+  variant,
+  defaultCategory = "",
+  defaultPackage = "",
+}: {
+  variant: "reservering" | "contact";
+  defaultCategory?: string;
+  defaultPackage?: string;
+}) {
+  const [values, setValues] = useState({
+    naam: "",
+    email: "",
+    telefoon: "",
+    categorie: defaultCategory,
+    pakket: defaultPackage,
+    bericht: "",
+    website: "",
+  });
+  const [consent, setConsent] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState<Status>("idle");
+  const [formError, setFormError] = useState("");
+  const startedAt = useRef(0);
+  const summary = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
+
+  const set =
+    (k: keyof typeof values) =>
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+      >,
+    ) =>
+      setValues((v) => ({ ...v, [k]: e.target.value }));
+  const aria = (k: string) => ({
+    "aria-invalid": !!errors[k],
+    "aria-describedby": errors[k] ? `${k}-error` : undefined,
+  });
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setFormError("");
+    const payload = {
+      ...values,
+      type: variant,
+      toestemming: consent,
+      startedAt: startedAt.current,
+    };
+    const parsed = requestSchema.safeParse(payload);
+    if (!parsed.success) {
+      setErrors(fieldErrors(parsed.error));
+      setStatus("idle");
+      setTimeout(() => summary.current?.focus(), 0);
+      return;
+    }
+    setErrors({});
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/aanvraag", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(parsed.data),
+      });
+      if (res.status === 422) {
+        const data = await res.json();
+        setErrors(data.errors ?? {});
+        setStatus("idle");
+        return;
+      }
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error);
+      }
+      setStatus("success");
+    } catch (err) {
+      setStatus("error");
+      setFormError(
+        err instanceof Error && err.message
+          ? err.message
+          : `Het versturen is niet gelukt. Probeer het opnieuw of bel ons op ${site.phone}.`,
+      );
+      setTimeout(() => summary.current?.focus(), 0);
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <div role="status" className="rounded-[15.2px] border border-success p-6">
+        <p className="text-[19px] font-bold">
+          Bedankt, we hebben je aanvraag ontvangen
+        </p>
+        <p className="mt-2 text-slate">
+          Je ontvangt een bevestiging per e-mail. Dit is een aanvraag en nog
+          geen bevestigde reservering. We nemen zo snel mogelijk contact met je
+          op.
+        </p>
+      </div>
+    );
+  }
+
+  const errorList = Object.entries(errors);
+  const reserveren = variant === "reservering";
+
+  return (
+    <form onSubmit={onSubmit} noValidate className="space-y-5">
+      <div
+        ref={summary}
+        tabIndex={-1}
+        role="alert"
+        aria-live="assertive"
+        className="outline-none"
+      >
+        {(errorList.length > 0 || formError) && (
+          <div className="rounded-[7.6px] border border-error bg-error/5 p-3 text-[14px] text-error">
+            {formError ||
+              "Controleer de gemarkeerde velden en probeer het opnieuw."}
+          </div>
+        )}
+      </div>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field id="naam" label="Naam" error={errors.naam} required>
+          <input
+            id="naam"
+            name="naam"
+            autoComplete="name"
+            value={values.naam}
+            onChange={set("naam")}
+            className={inputClass}
+            {...aria("naam")}
+          />
+        </Field>
+        <Field id="email" label="E-mailadres" error={errors.email} required>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            value={values.email}
+            onChange={set("email")}
+            className={inputClass}
+            {...aria("email")}
+          />
+        </Field>
+        <Field id="telefoon" label="Telefoonnummer" error={errors.telefoon}>
+          <input
+            id="telefoon"
+            name="telefoon"
+            type="tel"
+            autoComplete="tel"
+            value={values.telefoon}
+            onChange={set("telefoon")}
+            className={inputClass}
+            {...aria("telefoon")}
+          />
+        </Field>
+        {reserveren && (
+          <Field id="categorie" label="Rijbewijs" error={errors.categorie}>
+            <select
+              id="categorie"
+              name="categorie"
+              value={values.categorie}
+              onChange={set("categorie")}
+              className={inputClass}
+              {...aria("categorie")}
+            >
+              <option value="">Nog niet zeker</option>
+              {licenseCategories.map((c) => (
+                <option key={c.slug} value={c.code}>
+                  {c.code} · {c.vehicleType}
+                </option>
+              ))}
+            </select>
+          </Field>
+        )}
+      </div>
+      {reserveren && (
+        <Field id="pakket" label="Pakket of prestatie" error={errors.pakket}>
+          <select
+            id="pakket"
+            name="pakket"
+            value={values.pakket}
+            onChange={set("pakket")}
+            className={inputClass}
+            {...aria("pakket")}
+          >
+            <option value="">Nog niet zeker</option>
+            {packages.map((p) => (
+              <option key={p.slug} value={p.name}>
+                {p.name} · {p.priceLabel}
+              </option>
+            ))}
+          </select>
+        </Field>
+      )}
+      <Field
+        id="bericht"
+        label="Bericht"
+        error={errors.bericht}
+        required
+        hint="Vertel kort wat je zoekt, bijvoorbeeld je ervaring of gewenste startdatum."
+      >
+        <textarea
+          id="bericht"
+          name="bericht"
+          rows={5}
+          value={values.bericht}
+          onChange={set("bericht")}
+          className={inputClass}
+          aria-describedby={errors.bericht ? "bericht-error" : "bericht-hint"}
+          aria-invalid={!!errors.bericht}
+        />
+      </Field>
+      {/* Honeypot: invisible pour les humains */}
+      <div
+        aria-hidden
+        className="absolute -left-[9999px] h-0 w-0 overflow-hidden"
+      >
+        <label>
+          Website
+          <input
+            tabIndex={-1}
+            autoComplete="off"
+            value={values.website}
+            onChange={set("website")}
+          />
+        </label>
+      </div>
+      <Consent
+        checked={consent}
+        onChange={setConsent}
+        error={errors.toestemming}
+      />
+      <Button type="submit" disabled={status === "loading"}>
+        {status === "loading"
+          ? "Bezig met versturen…"
+          : reserveren
+            ? "Aanvraag versturen"
+            : "Bericht versturen"}
+      </Button>
+    </form>
+  );
+}

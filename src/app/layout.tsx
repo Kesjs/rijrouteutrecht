@@ -1,0 +1,66 @@
+import type { Metadata } from "next";
+import "@fontsource/inter/latin-400.css";
+import "@fontsource/inter/latin-500.css";
+import "@fontsource/inter/latin-700.css";
+import "./globals.css";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { site } from "@/data/site";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: {
+    default: "Vooruit Rijschool | Rijschool in Utrecht",
+    template: "%s | Vooruit Rijschool",
+  },
+  description:
+    "Praktijklessen, duidelijke prijzen en een helder traject naar je rijbewijs bij Vooruit Rijschool in Utrecht.",
+  openGraph: { type: "website", locale: "nl_NL", siteName: site.name },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "DrivingSchool",
+  name: site.name,
+  url: site.url,
+  telephone: site.phone,
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.street,
+    postalCode: site.postalCode,
+    addressLocality: site.city,
+    addressCountry: "NL",
+  },
+  areaServed: site.serviceArea,
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="nl">
+      <body>
+        <a
+          href="#inhoud"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-[7.6px] focus:bg-vivid-indigo focus:px-4 focus:py-2 focus:text-pure-white"
+        >
+          Ga naar de inhoud
+        </a>
+        <Navbar />
+        <div id="inhoud">{children}</div>
+        <Footer />
+        {process.env.BUSINESS_DETAILS_VERIFIED === "true" && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+            }}
+          />
+        )}
+      </body>
+    </html>
+  );
+}
