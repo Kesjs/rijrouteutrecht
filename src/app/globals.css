@@ -38,8 +38,8 @@ html {
 body {
   font-family: var(--font-sans);
   letter-spacing: -0.02em;
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--color-graphite);
   background: var(--color-pure-white);
   overflow-x: hidden;
@@ -55,6 +55,24 @@ h1,
 h2,
 h3 {
   letter-spacing: -0.02em;
+}
+
+main p {
+  text-wrap: pretty;
+}
+
+main p.text-slate,
+main li.text-slate {
+  line-height: 1.62;
+}
+
+/* Les montants restent alignés quand la traduction ou la devise s'allonge. */
+[class*="text-[32px]"],
+[class*="text-[34px]"],
+[class*="text-[44px]"],
+[class*="text-[60px]"],
+[class*="text-[72px]"] {
+  font-variant-numeric: tabular-nums;
 }
 
 /* Focus clavier visible partout */
