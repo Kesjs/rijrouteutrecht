@@ -25,6 +25,13 @@ const principes = [
   },
 ];
 
+const traject = [
+  ["Kennismaken", "We bespreken je rijbewijs, ervaring, planning en wat je al weet."],
+  ["Oefenen", "Je krijgt duidelijke feedback tijdens de praktijklessen en weet waar je volgende focus ligt."],
+  ["Opbouwen", "We herhalen wat nodig is en maken de stappen naar het examen concreet."],
+  ["Afronden", "Wanneer je klaar bent, bereiden we samen de laatste praktische stappen voor."],
+];
+
 export default function OverOnsPage() {
   return (
     <main>
@@ -52,12 +59,38 @@ export default function OverOnsPage() {
           ))}
         </div>
       </Section>
+      <Section title="Van eerste gesprek tot examen" intro="Een rijopleiding wordt overzichtelijker wanneer je weet wat de volgende stap is.">
+        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {traject.map(([title, text], index) => (
+            <li key={title} className="rounded-[15.2px] border border-fog/60 bg-pure-white p-5">
+              <span className="text-[13px] font-bold text-vivid-indigo">0{index + 1}</span>
+              <h3 className="mt-3 text-[19px] font-bold">{title}</h3>
+              <p className="mt-2 text-slate">{text}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
       <Section title="Waar we rijden">
         <p className="max-w-2xl text-slate">
           Ons werkgebied is {site.serviceArea}. Onze rijschool zit aan het{" "}
           {site.street} in {site.city}. Vraag ons gerust naar de mogelijkheden
           voor jouw woonplaats.
         </p>
+      </Section>
+      <Section tone="gray" title="Wat je van Stuurvast mag verwachten">
+        <div className="grid gap-4 md:grid-cols-2">
+          {[
+            ["Duidelijke feedback", "Je weet na elke les wat goed ging en waar je de volgende keer op let."],
+            ["Afspraken op papier", "Prijzen, voorwaarden en vervolgstappen worden vooraf helder besproken."],
+            ["Aandacht voor veiligheid", "We bouwen vaardigheden rustig op, met aandacht voor risico's en zelfstandigheid."],
+            ["Een aanspreekpunt", "Bij vragen over planning, pakket of examen weet je waar je terechtkunt."],
+          ].map(([title, text]) => (
+            <article key={title} className="rounded-[15.2px] border border-fog/60 bg-pure-white p-6">
+              <h3 className="text-[19px] font-bold">{title}</h3>
+              <p className="mt-2 text-slate">{text}</p>
+            </article>
+          ))}
+        </div>
       </Section>
       <CtaBand />
     </main>

@@ -22,6 +22,20 @@ export default function InstructeursPage() {
         title="De mensen naast je in de auto"
         intro="Je volgt de praktijklessen altijd samen met een instructeur."
       />
+      <Section title="Wat je van een instructeur mag verwachten" intro="De profielen worden aangevuld zodra de informatie definitief is. De manier van begeleiden staat al wel vast.">
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            ["Rustige uitleg", "We leggen uit wat er gebeurt, waarom het belangrijk is en hoe je het zelf kunt oefenen."],
+            ["Concrete feedback", "Na een oefening krijg je één of twee duidelijke aandachtspunten voor de volgende stap."],
+            ["Samen plannen", "Je bespreekt je doelen, beschikbaarheid en tempo zodat de opleiding bij je situatie past."],
+          ].map(([title, text]) => (
+            <article key={title} className="rounded-[15.2px] border border-fog/60 bg-pure-white p-6">
+              <h2 className="text-[20px] font-bold">{title}</h2>
+              <p className="mt-2 text-slate">{text}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
       <Section tone="gray">
         {instructors.length === 0 ? (
           <div className="max-w-xl rounded-[15.2px] border border-slate bg-pure-white p-6">
@@ -58,6 +72,9 @@ export default function InstructeursPage() {
             ))}
           </div>
         )}
+      </Section>
+      <Section title="Nog geen instructeur gekozen?" intro="Dat is geen probleem. Stuur je rijbewijs en je gewenste startmoment door; we zoeken samen de passende planning.">
+        <ButtonLink href="/reserveren">Stuur je aanvraag</ButtonLink>
       </Section>
     </main>
   );

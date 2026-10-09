@@ -29,6 +29,12 @@ const stappen = [
   },
 ];
 
+const theorieBlokken = [
+  ["Regels herkennen", "Verkeersborden, voorrang, snelheid en bijzondere situaties leren herkennen voordat je ze op straat tegenkomt."],
+  ["Situaties begrijpen", "Oefen niet alleen losse antwoorden, maar begrijp waarom een situatie veilig en volgens de regels verloopt."],
+  ["Rust bewaren", "Een goede voorbereiding helpt je om tijdens het examen rustig te blijven en je aandacht bij het verkeer te houden."],
+];
+
 export default function TheoriePage() {
   return (
     <main>
@@ -67,6 +73,17 @@ export default function TheoriePage() {
           ))}
         </ol>
       </Section>
+      <Section title="Zo bereid je je theorie voor" intro="Een goede voorbereiding bestaat uit kennis, herhaling en begrijpen wat je in het verkeer ziet.">
+        <div className="grid gap-4 md:grid-cols-3">
+          {theorieBlokken.map(([title, text], index) => (
+            <article key={title} className="rounded-[15.2px] border border-fog/60 bg-pure-white p-6">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-pale-lilac font-bold text-vivid-indigo">0{index + 1}</span>
+              <h3 className="mt-4 text-[19px] font-bold">{title}</h3>
+              <p className="mt-2 text-slate">{text}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
       <Section title="Wat bieden we aan?">
         <div className="max-w-2xl space-y-3 text-slate">
           <p>
@@ -79,6 +96,20 @@ export default function TheoriePage() {
             Het officiële CBR-examen vervangen we niet. De examens en de uitslag
             blijven altijd bij het CBR.
           </p>
+        </div>
+      </Section>
+      <Section tone="gray" title="Veelgestelde vragen" intro="De belangrijkste afspraken rond theorie en CBR op één plek.">
+        <div className="max-w-3xl divide-y divide-fog/50 rounded-[15.2px] border border-fog/60 bg-pure-white px-5">
+          {[
+            ["Waar doe ik het officiële theorie-examen?", "Het officiële theorie-examen leg je af bij het CBR. Wij kunnen je helpen om je voorbereiding en planning te bespreken."],
+            ["Kan ik al praktijklessen volgen zonder theoriecertificaat?", "Dat hangt af van je categorie en je situatie. Tijdens de intake bespreken we welke stap eerst logisch is."],
+            ["Vervangt jullie theoriebegeleiding het CBR-examen?", "Nee. De voorbereiding helpt je leren; alleen het CBR beoordeelt het officiële examen."],
+          ].map(([question, answer]) => (
+            <details key={question} className="group py-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">{question}<span aria-hidden className="text-xl font-normal text-vivid-indigo transition-transform group-open:rotate-45">+</span></summary>
+              <p className="mt-3 max-w-2xl text-slate">{answer}</p>
+            </details>
+          ))}
         </div>
       </Section>
       <CtaBand
