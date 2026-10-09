@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
@@ -72,6 +73,19 @@ export default function InstructeursPage() {
             ))}
           </div>
         )}
+      </Section>
+      <Section>
+        <div className="grid items-center gap-8 md:grid-cols-2">
+          <div className="image-frame relative aspect-[4/3] overflow-hidden rounded-[15.2px] md:order-2">
+            <Image src="/images/contact.webp" alt="Notitieboek en autosleutels voor het plannen van een rijles" fill sizes="(max-width: 767px) 100vw, 560px" className="object-cover" />
+          </div>
+          <div className="md:order-1">
+            <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-vivid-indigo">Een goede match</p>
+            <h2 className="mt-3 text-[28px] font-bold leading-tight">Vertel ons wat jou helpt om goed te leren</h2>
+            <p className="mt-3 text-slate">Heb je behoefte aan extra uitleg, een rustig tempo of juist een strakke planning? Zet het in je aanvraag. Zo kunnen we vanaf het eerste gesprek beter rekening houden met jouw situatie.</p>
+            <ButtonLink href="/reserveren" className="mt-5">Vertel ons je voorkeuren</ButtonLink>
+          </div>
+        </div>
       </Section>
       <Section title="Nog geen instructeur gekozen?" intro="Dat is geen probleem. Stuur je rijbewijs en je gewenste startmoment door; we zoeken samen de passende planning.">
         <ButtonLink href="/reserveren">Stuur je aanvraag</ButtonLink>

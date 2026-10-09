@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { CtaBand } from "@/components/ui/CtaBand";
@@ -76,6 +77,19 @@ export default function OverOnsPage() {
           {site.street} in {site.city}. Vraag ons gerust naar de mogelijkheden
           voor jouw woonplaats.
         </p>
+      </Section>
+      <Section tone="gray">
+        <div className="grid items-center gap-8 md:grid-cols-2">
+          <div>
+            <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-vivid-indigo">Leren in Utrecht</p>
+            <h2 className="mt-3 text-[28px] font-bold leading-tight">Oefenen met de situaties die je echt tegenkomt</h2>
+            <p className="mt-3 text-slate">Van rustige woonwijken tot drukkere kruispunten: we bouwen je ervaring stap voor stap op binnen ons werkgebied.</p>
+            <p className="mt-3 text-slate">Wil je weten of jouw woonplaats binnen de planning past? Stuur je postcode mee met je aanvraag.</p>
+          </div>
+          <div className="image-frame relative aspect-[4/3] overflow-hidden rounded-[15.2px]">
+            <Image src="/images/categories.webp" alt="Voertuigen op een rustig oefenterrein" fill sizes="(max-width: 767px) 100vw, 560px" className="object-cover" />
+          </div>
+        </div>
       </Section>
       <Section tone="gray" title="Wat je van Stuurvast mag verwachten">
         <div className="grid gap-4 md:grid-cols-2">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
@@ -96,6 +97,19 @@ export default function TheoriePage() {
             Het officiële CBR-examen vervangen we niet. De examens en de uitslag
             blijven altijd bij het CBR.
           </p>
+        </div>
+      </Section>
+      <Section tone="gray">
+        <div className="grid items-center gap-8 md:grid-cols-2">
+          <div className="image-frame relative aspect-[4/3] overflow-hidden rounded-[15.2px]">
+            <Image src="/images/practice.webp" alt="Instructeur en leerling tijdens een praktijkles" fill sizes="(max-width: 767px) 100vw, 560px" className="object-cover" />
+          </div>
+          <div>
+            <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-vivid-indigo">Theorie naar praktijk</p>
+            <h2 className="mt-3 text-[28px] font-bold leading-tight">Je leert beter wanneer je begrijpt wat je ziet</h2>
+            <p className="mt-3 text-slate">Tijdens de praktijklessen vertalen we verkeersregels naar echte situaties: kruispunten, snelheid, kijkgedrag en keuzes in het verkeer.</p>
+            <ButtonLink href="/reserveren" className="mt-5">Bespreek je voorbereiding</ButtonLink>
+          </div>
         </div>
       </Section>
       <Section tone="gray" title="Veelgestelde vragen" intro="De belangrijkste afspraken rond theorie en CBR op één plek.">
