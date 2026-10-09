@@ -97,11 +97,14 @@ export function RequestForm({
     }
     setErrors({});
     setStatus("loading");
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 15000);
     try {
       const res = await fetch("/api/aanvraag", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(parsed.data),
+        signal: controller.signal,
       });
       if (res.status === 422) {
         const data = await res.json();
@@ -117,12 +120,15 @@ export function RequestForm({
       setStatus("success");
     } catch (err) {
       setStatus("error");
-      setFormError(
-        err instanceof Error && err.message
+      const timedOut = err instanceof DOMException && err.name === "AbortError";
+      setFormError(timedOut
+        ? "De verbinding duurt te lang. Controleer je verbinding en probeer het opnieuw."
+        : err instanceof Error && err.message
           ? err.message
-          : `Het versturen is niet gelukt. Probeer het opnieuw of bel ons op ${site.phone}.`,
-      );
+          : `Het versturen is niet gelukt. Probeer het opnieuw of bel ons op ${site.phone}.`);
       setTimeout(() => summary.current?.focus(), 0);
+    } finally {
+      window.clearTimeout(timeoutId);
     }
   }
 

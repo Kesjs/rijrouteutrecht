@@ -103,6 +103,75 @@ Object.assign(additionalTranslations.fr, { "Bekijk alle rijbewijzen": "Voir tous
 Object.assign(additionalTranslations.es, { "Bekijk alle rijbewijzen": "Ver todos los permisos" });
 Object.assign(additionalTranslations.it, { "Bekijk alle rijbewijzen": "Vedi tutte le patenti" });
 
+Object.assign(additionalTranslations.en, {
+  "De verbinding duurt te lang. Controleer je verbinding en probeer het opnieuw.": "The connection is taking too long. Check your connection and try again.",
+  "Scooter en bromfiets": "Scooter and moped",
+  "Je eerste rijbewijs, vanaf 16 jaar.": "Your first driving licence, from age 16.",
+  "Motor": "Motorcycle",
+  "Alle motorcategorieën, inclusief A1 en A2.": "All motorcycle categories, including A1 and A2.",
+  "Personenauto": "Passenger car",
+  "Het standaard autorijbewijs.": "The standard car licence.",
+  "Auto met aanhanger": "Car with trailer",
+  "Voor wie regelmatig met aanhanger rijdt.": "For anyone who regularly drives with a trailer.",
+  "Vrachtwagen": "Lorry",
+  "Inclusief C1 voor lichtere vrachtwagens.": "Including C1 for lighter lorries.",
+  "Bus": "Bus",
+  "Inclusief D1 en DE waar relevant.": "Including D1 and DE where relevant.",
+  "Tractor en landbouwvoertuig": "Tractor and agricultural vehicle",
+  "Voor tractoren en landbouwvoertuigen op de openbare weg.": "For tractors and agricultural vehicles on public roads.",
+});
+Object.assign(additionalTranslations.fr, {
+  "De verbinding duurt te lang. Controleer je verbinding en probeer het opnieuw.": "La connexion prend trop de temps. Vérifiez votre connexion et réessayez.",
+  "Scooter en bromfiets": "Scooter et cyclomoteur",
+  "Je eerste rijbewijs, vanaf 16 jaar.": "Votre premier permis, dès 16 ans.",
+  "Motor": "Moto",
+  "Alle motorcategorieën, inclusief A1 en A2.": "Toutes les catégories moto, y compris A1 et A2.",
+  "Personenauto": "Voiture",
+  "Het standaard autorijbewijs.": "Le permis voiture standard.",
+  "Auto met aanhanger": "Voiture avec remorque",
+  "Voor wie regelmatig met aanhanger rijdt.": "Pour celles et ceux qui conduisent régulièrement avec une remorque.",
+  "Vrachtwagen": "Camion",
+  "Inclusief C1 voor lichtere vrachtwagens.": "Y compris le C1 pour les camions plus légers.",
+  "Bus": "Autobus",
+  "Inclusief D1 en DE waar relevant.": "Y compris D1 et DE lorsque cela s'applique.",
+  "Tractor en landbouwvoertuig": "Tracteur et véhicule agricole",
+  "Voor tractoren en landbouwvoertuigen op de openbare weg.": "Pour les tracteurs et véhicules agricoles sur la voie publique.",
+});
+Object.assign(additionalTranslations.es, {
+  "De verbinding duurt te lang. Controleer je verbinding en probeer het opnieuw.": "La conexión tarda demasiado. Comprueba tu conexión y vuelve a intentarlo.",
+  "Scooter en bromfiets": "Scooter y ciclomotor",
+  "Je eerste rijbewijs, vanaf 16 jaar.": "Tu primer permiso, a partir de los 16 años.",
+  "Motor": "Moto",
+  "Alle motorcategorieën, inclusief A1 en A2.": "Todas las categorías de moto, incluidas A1 y A2.",
+  "Personenauto": "Turismo",
+  "Het standaard autorijbewijs.": "El permiso de coche estándar.",
+  "Auto met aanhanger": "Coche con remolque",
+  "Voor wie regelmatig met aanhanger rijdt.": "Para quienes conducen habitualmente con remolque.",
+  "Vrachtwagen": "Camión",
+  "Inclusief C1 voor lichtere vrachtwagens.": "Incluye el C1 para camiones ligeros.",
+  "Bus": "Autobús",
+  "Inclusief D1 en DE waar relevant.": "Incluye D1 y DE cuando corresponda.",
+  "Tractor en landbouwvoertuig": "Tractor y vehículo agrícola",
+  "Voor tractoren en landbouwvoertuigen op de openbare weg.": "Para tractores y vehículos agrícolas en vías públicas.",
+});
+Object.assign(additionalTranslations.it, {
+  "De verbinding duurt te lang. Controleer je verbinding en probeer het opnieuw.": "La connessione sta impiegando troppo tempo. Controlla la connessione e riprova.",
+  "Scooter en bromfiets": "Scooter e ciclomotore",
+  "Je eerste rijbewijs, vanaf 16 jaar.": "La tua prima patente, dai 16 anni.",
+  "Motor": "Moto",
+  "Alle motorcategorieën, inclusief A1 en A2.": "Tutte le categorie di moto, incluse A1 e A2.",
+  "Personenauto": "Auto",
+  "Het standaard autorijbewijs.": "La patente auto standard.",
+  "Auto met aanhanger": "Auto con rimorchio",
+  "Voor wie regelmatig met aanhanger rijdt.": "Per chi guida spesso con un rimorchio.",
+  "Vrachtwagen": "Camion",
+  "Inclusief C1 voor lichtere vrachtwagens.": "Include la C1 per i camion più leggeri.",
+  "Bus": "Autobus",
+  "Inclusief D1 en DE waar relevant.": "Include D1 e DE quando pertinente.",
+  "Tractor en landbouwvoertuig": "Trattore e veicolo agricolo",
+  "Voor tractoren en landbouwvoertuigen op de openbare weg.": "Per trattori e veicoli agricoli sulla strada pubblica.",
+});
+
 for (const locale of locales.filter((item): item is Exclude<Locale, "nl"> => item !== "nl")) {
   Object.assign(translations[locale], additionalTranslations[locale]);
 }

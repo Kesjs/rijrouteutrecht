@@ -24,8 +24,8 @@ function translateAttributes(root: HTMLElement, locale: Locale) {
 
 function translateDom(locale: Locale) {
   const root = document.body;
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   const nodes: Text[] = [];
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   let node: Node | null;
   while ((node = walker.nextNode())) {
     const parent = node.parentElement;
@@ -39,7 +39,7 @@ function translateDom(locale: Locale) {
     const original = (textNode as Text & { __nl?: string }).__nl ?? trimmed;
     (textNode as Text & { __nl?: string }).__nl = original;
     const translated = translate(original, locale);
-    if (translated !== original) {
+    if (trimmed !== translated) {
       const start = raw.indexOf(trimmed);
       textNode.textContent = `${raw.slice(0, start)}${translated}${raw.slice(start + trimmed.length)}`;
     }
@@ -72,7 +72,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     },
   }), [locale]);
 
-  return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;
+  return (
+    <LocaleContext.Provider value={value}>
+      <div key={locale} className="contents">
+        {children}
+      </div>
+    </LocaleContext.Provider>
+  );
 }
 
 export function useLocale() {
