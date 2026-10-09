@@ -1,4 +1,4 @@
-# Vooruit Rijschool
+# Stuurvast Rijschool
 
 Site public (Next.js 16, React 19, App Router, Tailwind v4, shadcn/ui et Radix) pour une auto-école à Utrecht, en néerlandais.
 

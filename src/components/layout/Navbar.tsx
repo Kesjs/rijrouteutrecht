@@ -25,7 +25,7 @@ export function Navbar() {
             className="flex h-8 w-8 items-center justify-center rounded-[7.6px] bg-vivid-indigo text-sm text-pure-white"
             aria-hidden
           >
-            V
+            S
           </span>
           <span>{site.name}</span>
         </Link>

@@ -48,7 +48,7 @@ export default function TheoriePage() {
       <Section
         tone="gray"
         title="Het traject naar je rijbewijs"
-        intro="Vooruit verzorgt de praktijklessen en begeleidt je door de stappen eromheen."
+        intro="Stuurvast verzorgt de praktijklessen en begeleidt je door de stappen eromheen."
       >
         <ol className="grid gap-4 md:grid-cols-2">
           {stappen.map((s, i) => (

@@ -8,7 +8,7 @@ export function Hero() {
       <div className="mx-auto grid max-w-[1280px] items-center gap-10 px-5 pb-12 pt-10 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 lg:py-16">
         <div>
           <p className="mb-5 text-[13px] font-bold uppercase tracking-[0.12em] text-vivid-indigo">
-            Vooruit Rijschool / Utrecht
+            Stuurvast Rijschool / Utrecht
           </p>
           <h1 className="max-w-xl text-[44px] font-bold leading-[1.04] tracking-[-0.045em] sm:text-[60px] xl:text-[72px]">
             Jouw rijbewijs begint hier.
@@ -38,7 +38,7 @@ export function Hero() {
             </p>
           </div>
         </div>
-        <div className="relative aspect-[5/4] overflow-hidden rounded-[15.2px] bg-frost-gray lg:aspect-[6/5]">
+        <div className="image-frame relative aspect-[5/4] overflow-hidden rounded-[15.2px] bg-frost-gray lg:aspect-[6/5]">
           <Image
             src="/images/hero.webp"
             alt="Illustratief beeld van een lesauto langs een Nederlandse gracht"

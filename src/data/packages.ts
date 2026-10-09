@@ -37,7 +37,7 @@ const raw: Omit<Package, "priceLabel">[] = [
     duration: "10 lessen van 60 minuten",
     includes: [
       "10 praktijklessen",
-      "Vast aanspreekpunt bij Vooruit",
+      "Vast aanspreekpunt bij Stuurvast",
       "Lessen op een tempo dat bij je past",
     ],
     payable: true,

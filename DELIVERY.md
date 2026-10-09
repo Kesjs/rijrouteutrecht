@@ -1,4 +1,4 @@
-# Livraison Vooruit — 9 octobre 2026
+# Livraison Stuurvast — 9 octobre 2026
 
 ## Éléments présents
 

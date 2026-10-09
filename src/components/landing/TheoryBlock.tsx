@@ -24,7 +24,7 @@ export function TheoryBlock() {
             Ontdek theorie en CBR
           </ButtonLink>
         </div>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[15.2px] bg-frost-gray">
+        <div className="image-frame relative aspect-[4/3] overflow-hidden rounded-[15.2px] bg-frost-gray">
           <Image
             src="/images/theory.webp"
             alt="Illustratief beeld van een tablet, notities en verkeersborden ter voorbereiding op de theorie"

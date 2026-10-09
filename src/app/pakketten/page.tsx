@@ -36,7 +36,7 @@ export default function PakkettenPage() {
             <h3 className="font-bold">Betalen</h3>
             <p className="mt-1 text-slate">
               Je betaalt het hele pakket in één keer en veilig via Stripe.
-              Vooruit ziet en bewaart je bankgegevens niet.
+              Stuurvast ziet en bewaart je bankgegevens niet.
             </p>
           </div>
           <div>

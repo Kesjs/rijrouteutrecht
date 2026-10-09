@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "Over ons",
   description:
-    "Maak kennis met Vooruit Rijschool in Utrecht: onze aanpak, onze werkwijze en ons werkgebied.",
+    "Maak kennis met Stuurvast Rijschool in Utrecht: onze aanpak, onze werkwijze en ons werkgebied.",
 };
 
 const principes = [
@@ -35,7 +35,7 @@ export default function OverOnsPage() {
           alt: "Illustratief beeld van begeleiding tijdens een rijles",
         }}
         title="Een rijschool die je traject overzichtelijk maakt"
-        intro="Vooruit Rijschool helpt je in Utrecht stap voor stap naar je rijbewijs, met duidelijke afspraken en persoonlijke begeleiding."
+        intro="Stuurvast Rijschool helpt je in Utrecht stap voor stap naar je rijbewijs, met duidelijke afspraken en persoonlijke begeleiding."
       />
       <Section tone="gray" title="Onze aanpak">
         <div className="grid gap-4 md:grid-cols-3">

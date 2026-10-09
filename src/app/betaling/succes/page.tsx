@@ -54,7 +54,7 @@ export default async function SuccesPage({
           </h1>
           <p className="mt-3 text-slate">
             {paid
-              ? "Je ontvangt zo een bevestiging per e-mail. Vooruit neemt contact met je op om je lessen in te plannen."
+              ? "Je ontvangt zo een bevestiging per e-mail. Stuurvast neemt contact met je op om je lessen in te plannen."
               : "Je betaalmethode heeft wat meer tijd nodig. Zodra de betaling binnen is, ontvang je een bevestiging per e-mail."}
           </p>
           <dl className="mt-6 space-y-2 border-t border-fog/50 pt-4">

@@ -32,7 +32,7 @@ export function PageHeader({
           )}
         </div>
         {image && (
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[15.2px]">
+          <div className="image-frame relative aspect-[4/3] overflow-hidden rounded-[15.2px]">
             <Image
               src={image.src}
               alt={image.alt}

@@ -129,7 +129,7 @@ export async function sendPaymentEmails(d: {
     subject: `Betaling ontvangen: ${d.pakket}`,
     html: wrap(
       `<h2>Bedankt voor je betaling, ${esc(d.naam)}</h2>
-      <p>We hebben je betaling ontvangen. Vooruit neemt contact met je op om de lessen in te plannen.</p>
+      <p>We hebben je betaling ontvangen. Stuurvast neemt contact met je op om de lessen in te plannen.</p>
       ${rows([
         ["Pakket", d.pakket],
         ["Bedrag", d.bedrag],

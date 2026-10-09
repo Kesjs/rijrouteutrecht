@@ -17,7 +17,7 @@ export function TrustBlock() {
   return (
     <section className="bg-midnight-ink py-16 text-pure-white">
       <div className="mx-auto max-w-[1200px] px-4">
-        <h2 className="text-2xl font-bold">Waarom Vooruit</h2>
+        <h2 className="text-2xl font-bold">Waarom Stuurvast</h2>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {points.map((p) => (
             <div key={p.title}>

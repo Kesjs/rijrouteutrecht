@@ -7,7 +7,7 @@ import { instructors } from "@/data/instructors";
 export const metadata: Metadata = {
   title: "Instructeurs",
   description:
-    "Maak kennis met de instructeurs van Vooruit Rijschool in Utrecht.",
+    "Maak kennis met de instructeurs van Stuurvast Rijschool in Utrecht.",
 };
 
 export default function InstructeursPage() {

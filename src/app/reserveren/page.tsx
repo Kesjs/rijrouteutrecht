@@ -7,7 +7,7 @@ import { getPackage } from "@/data/packages";
 export const metadata: Metadata = {
   title: "Aanvraag sturen",
   description:
-    "Stuur een aanvraag voor rijlessen bij Vooruit Rijschool. We nemen zo snel mogelijk contact met je op.",
+    "Stuur een aanvraag voor rijlessen bij Stuurvast Rijschool. We nemen zo snel mogelijk contact met je op.",
 };
 
 export default async function ReserverenPage({

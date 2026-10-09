@@ -22,15 +22,16 @@ export function MotionRoot({ children }: { children: React.ReactNode }) {
           const element = entry.target as HTMLElement;
           element.dataset.revealed = "true";
           if (preference.matches) continue;
+          const hasImage = Boolean(element.querySelector("img"));
           const siblings = Array.from(element.parentElement?.children ?? []);
           const animation = element.animate(
             [
-              { opacity: 0, transform: "translateY(20px)" },
+              { opacity: 0, transform: `translateY(${hasImage ? 8 : 20}px)` },
               { opacity: 1, transform: "translateY(0)" },
             ],
             {
-              duration: 600,
-              delay: (siblings.indexOf(element) % 3) * 70,
+              duration: hasImage ? 480 : 600,
+              delay: hasImage ? 0 : (siblings.indexOf(element) % 3) * 70,
               easing: "cubic-bezier(0.22, 1, 0.36, 1)",
             },
           );

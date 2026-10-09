@@ -27,7 +27,7 @@ export const faq: FaqItem[] = [
   },
   {
     q: "Wat gebeurt er na mijn betaling?",
-    a: "Je krijgt direct een bevestiging per e-mail. Daarna neemt Vooruit contact met je op om je lessen in te plannen.",
+    a: "Je krijgt direct een bevestiging per e-mail. Daarna neemt Stuurvast contact met je op om je lessen in te plannen.",
   },
   {
     q: "Kan ik een spoedcursus volgen?",

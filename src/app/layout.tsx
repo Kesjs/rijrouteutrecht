@@ -11,11 +11,11 @@ import { MotionRoot } from "@/components/ui/MotionRoot";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Vooruit Rijschool | Rijschool in Utrecht",
-    template: "%s | Vooruit Rijschool",
+    default: "Stuurvast Rijschool | Rijschool in Utrecht",
+    template: "%s | Stuurvast Rijschool",
   },
   description:
-    "Praktijklessen, duidelijke prijzen en een helder traject naar je rijbewijs bij Vooruit Rijschool in Utrecht.",
+    "Praktijklessen, duidelijke prijzen en een helder traject naar je rijbewijs bij Stuurvast Rijschool in Utrecht.",
   openGraph: { type: "website", locale: "nl_NL", siteName: site.name },
 };
 

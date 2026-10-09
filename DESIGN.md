@@ -1,4 +1,4 @@
-# Vooruit — système visuel
+# Stuurvast — système visuel
 
 Site d'auto-école néerlandais : clair, sobre, rassurant, mobile-first. Conserver les tokens Shortcut ; l'accueil privilégie désormais des scènes de conduite et une hiérarchie éditoriale plus marquée.
 

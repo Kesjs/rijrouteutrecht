@@ -9,7 +9,7 @@ import { priceDisclaimer } from "@/data/site";
 export const metadata: Metadata = {
   title: "Rijbewijzen",
   description:
-    "Bekijk alle rijbewijscategorieën bij Vooruit Rijschool: AM, A, B, BE, C, D en T, met richtprijzen.",
+    "Bekijk alle rijbewijscategorieën bij Stuurvast Rijschool: AM, A, B, BE, C, D en T, met richtprijzen.",
 };
 
 export default function RijbewijzenPage() {

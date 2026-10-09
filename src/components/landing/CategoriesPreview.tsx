@@ -33,7 +33,7 @@ export function CategoriesPreview() {
           aria-label="Ontdek alle rijbewijzen"
           className="discovery-images grid grid-cols-2 items-start gap-4 rounded-[15.2px]"
         >
-          <div className="relative aspect-[3/4] overflow-hidden rounded-[15.2px] bg-frost-gray">
+          <div className="image-frame relative aspect-[3/4] overflow-hidden rounded-[15.2px] bg-frost-gray">
             <Image
               src="/images/scooter.webp"
               alt="Illustratief beeld van een scooter langs een Nederlandse gracht"
@@ -42,7 +42,7 @@ export function CategoriesPreview() {
               className="object-cover object-[55%_center]"
             />
           </div>
-          <div className="relative mt-10 aspect-[3/4] overflow-hidden rounded-[15.2px] bg-frost-gray">
+          <div className="image-frame relative mt-10 aspect-[3/4] overflow-hidden rounded-[15.2px] bg-frost-gray">
             <Image
               src="/images/motor.webp"
               alt="Illustratief beeld van een motor op een oefenterrein"

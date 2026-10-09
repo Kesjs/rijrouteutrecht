@@ -1,6 +1,6 @@
 # Produit
 
-Vooruit est un site néerlandais d'auto-école à Utrecht. Le visiteur découvre les sept catégories, compare les prix indicatifs, consulte les offres, envoie une demande ou paie un forfait complet via Stripe après récapitulatif.
+Stuurvast est un site néerlandais d'auto-école à Utrecht. Le visiteur découvre les sept catégories, compare les prix indicatifs, consulte les offres, envoie une demande ou paie un forfait complet via Stripe après récapitulatif.
 
 Les leçons pratiques sont physiques. La théorie ne remplace pas les examens officiels. Une demande n'est jamais une réservation confirmée. Le site ne vend pas la délivrance administrative du permis.
 

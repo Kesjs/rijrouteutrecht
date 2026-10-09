@@ -20,7 +20,7 @@ export function ProcessSteps() {
   return (
     <section className="bg-frost-gray py-16 lg:py-24">
       <div className="mx-auto grid max-w-[1280px] items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-[15.2px] bg-pale-lilac sm:aspect-[5/4] lg:aspect-[4/5]">
+        <div className="image-frame relative aspect-[4/5] overflow-hidden rounded-[15.2px] bg-pale-lilac sm:aspect-[5/4] lg:aspect-[4/5]">
           <Image
             src="/images/practice.webp"
             alt="Illustratief beeld van handen aan het stuur tijdens een rijles"

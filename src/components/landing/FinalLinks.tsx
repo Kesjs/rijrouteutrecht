@@ -36,7 +36,7 @@ export function FinalLinks() {
               href={link.href}
               className="group grid grid-cols-[0.8fr_1fr] overflow-hidden rounded-[15.2px] border border-fog/40 bg-pure-white"
             >
-              <div className="relative min-h-44 overflow-hidden">
+              <div className="image-frame relative aspect-[4/3] min-h-44 overflow-hidden">
                 <Image
                   src={link.image}
                   alt={link.alt}

@@ -6,7 +6,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Neem contact op met Vooruit Rijschool in Utrecht: telefoon, e-mail, adres of het contactformulier.",
+    "Neem contact op met Stuurvast Rijschool in Utrecht: telefoon, e-mail, adres of het contactformulier.",
 };
 
 export default function ContactPage() {
