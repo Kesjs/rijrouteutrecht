@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ButtonLink } from "@/components/ui/Button";
 import { site } from "@/data/site";
 
 export function ContactQuick() {
@@ -10,12 +10,9 @@ export function ContactQuick() {
           {site.address} · <a href={site.phoneHref}>{site.phone}</a> ·{" "}
           <a href={site.emailHref}>{site.email}</a>
         </p>
-        <Link
-          href="/contact"
-          className="mt-6 inline-block rounded-[7.6px] bg-vivid-indigo px-[19px] py-[11px] text-pure-white"
-        >
+        <ButtonLink href="/contact" className="mt-6">
           Stuur een aanvraag
-        </Link>
+        </ButtonLink>
       </div>
     </section>
   );

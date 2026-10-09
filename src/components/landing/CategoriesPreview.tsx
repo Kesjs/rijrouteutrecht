@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { ButtonLink } from "@/components/ui/Button";
 
@@ -27,7 +28,11 @@ export function CategoriesPreview() {
             <ArrowRightIcon aria-hidden className="ml-2" />
           </ButtonLink>
         </div>
-        <div className="grid grid-cols-2 items-start gap-4">
+        <Link
+          href="/rijbewijzen"
+          aria-label="Ontdek alle rijbewijzen"
+          className="discovery-images grid grid-cols-2 items-start gap-4 rounded-[15.2px]"
+        >
           <div className="relative aspect-[3/4] overflow-hidden rounded-[15.2px] bg-frost-gray">
             <Image
               src="/images/scooter.webp"
@@ -46,7 +51,7 @@ export function CategoriesPreview() {
               className="object-cover object-[35%_center]"
             />
           </div>
-        </div>
+        </Link>
       </div>
     </section>
   );

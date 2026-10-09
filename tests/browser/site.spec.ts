@@ -58,6 +58,68 @@ test("responsive pages do not overflow", async ({ page }) => {
   }
 });
 
+test("motion feedback respects reduced motion and works after navigation", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const original = Element.prototype.animate;
+    const state = window as unknown as { motionCalls: number };
+    state.motionCalls = 0;
+    Element.prototype.animate = function (...args) {
+      state.motionCalls++;
+      return original.apply(this, args);
+    };
+  });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { motionCalls: number }).motionCalls,
+      ),
+    )
+    .toBeGreaterThan(0);
+  const button = page.getByRole("link", { name: "Start met een aanvraag" });
+  await button.hover();
+  await expect
+    .poll(() => button.evaluate((node) => getComputedStyle(node).transform))
+    .not.toBe("none");
+  await page
+    .getByRole("heading", { name: "Goed voorbereid begint vóór je instapt." })
+    .scrollIntoViewIfNeeded();
+  await expect
+    .poll(() =>
+      page
+        .locator(".reading-progress")
+        .evaluate((node) => new DOMMatrix(getComputedStyle(node).transform).a),
+    )
+    .toBeGreaterThan(0);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await expect(page.locator('[data-revealed="true"]').first()).toBeAttached();
+  expect(
+    await page.evaluate(
+      () => (window as unknown as { motionCalls: number }).motionCalls,
+    ),
+  ).toBe(0);
+  await button.hover();
+  await expect(button).toHaveCSS("transform", "none");
+  const discovery = page.getByRole("link", {
+    name: "Ontdek alle rijbewijzen",
+    exact: true,
+  });
+  await discovery.focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/rijbewijzen$/);
+  await expect(page.locator("main")).toContainText("€");
+  await expect(page.locator('[data-revealed="true"]').first()).toBeAttached();
+  expect(
+    await page.evaluate(
+      () => (window as unknown as { motionCalls: number }).motionCalls,
+    ),
+  ).toBe(0);
+});
+
 test("request preselection and client validation", async ({ page }) => {
   await page.goto("/reserveren?categorie=b&pakket=beginner");
   await expect(page.getByLabel("Rijbewijs", { exact: false })).toHaveValue("B");

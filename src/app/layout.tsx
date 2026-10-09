@@ -6,6 +6,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { site } from "@/data/site";
+import { MotionRoot } from "@/components/ui/MotionRoot";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -50,7 +51,7 @@ export default function RootLayout({
           Ga naar de inhoud
         </a>
         <Navbar />
-        <div id="inhoud">{children}</div>
+        <MotionRoot>{children}</MotionRoot>
         <Footer />
         {process.env.BUSINESS_DETAILS_VERIFIED === "true" && (
           <script
