@@ -5,6 +5,7 @@ import { ProcessSteps } from "@/components/landing/ProcessSteps";
 import { TheoryBlock } from "@/components/landing/TheoryBlock";
 import { TrustBlock } from "@/components/landing/TrustBlock";
 import { ContactQuick } from "@/components/landing/ContactQuick";
+import { FinalLinks } from "@/components/landing/FinalLinks";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
       <TheoryBlock />
       <PackagesPreview />
       <TrustBlock />
+      <FinalLinks />
       <ContactQuick />
     </main>
   );
