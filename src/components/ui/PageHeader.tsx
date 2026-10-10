@@ -32,13 +32,13 @@ export function PageHeader({
           )}
         </div>
         {image && (
-          <div className="image-frame relative min-h-[260px] aspect-[4/3] overflow-hidden rounded-[15.2px] lg:min-h-0">
+          <div className="image-frame relative min-w-0 min-h-[260px] w-full aspect-[4/3] overflow-hidden rounded-[15.2px] lg:min-h-0">
             <Image
               src={image.src}
               alt={image.alt}
               fill
               preload
-              sizes="(max-width: 1023px) 100vw, 560px"
+              sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(100vw - 3rem), 560px"
               className="object-cover"
             />
           </div>

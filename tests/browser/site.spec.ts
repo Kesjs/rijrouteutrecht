@@ -180,6 +180,22 @@ test("homepage images load and header pages are reachable at every breakpoint", 
   }
 });
 
+test("license page header image remains visible on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/rijbewijzen");
+
+  const image = page.locator('main img[alt*="Verschillende voertuigen"]');
+  await expect(image).toBeVisible();
+  await expect(image).toHaveJSProperty("complete", true);
+  await expect
+    .poll(() => image.evaluate((img: HTMLImageElement) => img.naturalWidth))
+    .toBeGreaterThan(0);
+  await expect(image).toHaveAttribute(
+    "sizes",
+    "(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(100vw - 3rem), 560px",
+  );
+});
+
 test("language switcher translates the current page and can switch back", async ({
   page,
 }) => {
@@ -191,6 +207,12 @@ test("language switcher translates the current page and can switch back", async 
   await expect.poll(() => page.evaluate(() => document.documentElement.lang)).toBe("fr");
   await expect(page.locator("h1")).toHaveText("Choisissez le permis qui vous convient");
   await expect(page.locator('header nav a').first()).toHaveText("Permis de conduire");
+  await expect(page.locator("main")).toContainText(
+    "Prix indicatifs basés sur le marché néerlandais en 2026. Le coût final dépend de votre niveau et du nombre de leçons nécessaires.",
+  );
+  await expect(page.locator("main")).not.toContainText(
+    "Richtprijzen op basis van de Nederlandse markt in 2026.",
+  );
 
   await switcher.locator("summary").click();
   await switcher.getByRole("option", { name: "Nederlands", exact: true }).click();

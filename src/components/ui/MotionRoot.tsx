@@ -26,7 +26,10 @@ export function MotionRoot({ children }: { children: React.ReactNode }) {
           const siblings = Array.from(element.parentElement?.children ?? []);
           const animation = element.animate(
             [
-              { opacity: 0, transform: `translateY(${hasImage ? 8 : 20}px)` },
+              {
+                opacity: hasImage ? 1 : 0,
+                transform: `translateY(${hasImage ? 8 : 20}px)`,
+              },
               { opacity: 1, transform: "translateY(0)" },
             ],
             {
