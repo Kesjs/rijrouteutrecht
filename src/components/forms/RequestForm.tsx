@@ -5,8 +5,9 @@ import { Field, Consent, inputClass, selectClass } from "./Field";
 import { requestSchema, fieldErrors } from "@/lib/validation";
 import { licenseCategories } from "@/data/license-categories";
 import { packages } from "@/data/packages";
-import { site } from "@/data/site";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { translate } from "@/i18n/translations";
+import { useLocale } from "@/components/i18n/LanguageProvider";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -19,6 +20,9 @@ export function RequestForm({
   defaultCategory?: string;
   defaultPackage?: string;
 }) {
+  const { locale } = useLocale();
+  const localize = (message?: string) =>
+    message ? translate(message, locale) : undefined;
   const [values, setValues] = useState({
     naam: "",
     email: "",
@@ -115,7 +119,7 @@ export function RequestForm({
       }
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error);
+        throw new Error(data.error ?? "Verzenden mislukt.");
       }
       setStatus("success");
     } catch (err) {
@@ -125,7 +129,7 @@ export function RequestForm({
         ? "De verbinding duurt te lang. Controleer je verbinding en probeer het opnieuw."
         : err instanceof Error && err.message
           ? err.message
-          : `Het versturen is niet gelukt. Probeer het opnieuw of bel ons op ${site.phone}.`);
+          : "Het versturen is niet gelukt. Controleer je verbinding en probeer het opnieuw.");
       setTimeout(() => summary.current?.focus(), 0);
     } finally {
       window.clearTimeout(timeoutId);
@@ -136,12 +140,12 @@ export function RequestForm({
     return (
       <div role="status" className="rounded-[15.2px] border border-success p-6">
         <p className="text-[19px] font-bold">
-          Bedankt, we hebben je aanvraag ontvangen
+          {localize("Bedankt, we hebben je aanvraag ontvangen")}
         </p>
         <p className="mt-2 text-slate">
-          Je ontvangt een bevestiging per e-mail. Dit is een aanvraag en nog
-          geen bevestigde reservering. We nemen zo snel mogelijk contact met je
-          op.
+          {localize(
+            "We hebben je aanvraag ontvangen. Dit is nog geen bevestigde reservering. We nemen zo snel mogelijk persoonlijk contact met je op.",
+          )}
         </p>
       </div>
     );
@@ -161,8 +165,8 @@ export function RequestForm({
       >
         {(errorList.length > 0 || formError) && (
           <div className="rounded-[7.6px] border border-error bg-error/5 p-3 text-[14px] text-error">
-            {formError ||
-              "Controleer de gemarkeerde velden en probeer het opnieuw."}
+            {localize(formError) ||
+              localize("Controleer de gemarkeerde velden en probeer het opnieuw.")}
           </div>
         )}
       </div>
@@ -171,7 +175,7 @@ export function RequestForm({
         gegevens alleen om je aanvraag te beantwoorden.
       </p>
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="naam" label="Naam" error={errors.naam} required>
+        <Field id="naam" label="Naam" error={localize(errors.naam)} required>
           <input
             id="naam"
             name="naam"
@@ -184,7 +188,7 @@ export function RequestForm({
             {...aria("naam")}
           />
         </Field>
-        <Field id="email" label="E-mailadres" error={errors.email} required>
+        <Field id="email" label="E-mailadres" error={localize(errors.email)} required>
           <input
             id="email"
             name="email"
@@ -198,7 +202,7 @@ export function RequestForm({
             {...aria("email")}
           />
         </Field>
-        <Field id="telefoon" label="Telefoonnummer" error={errors.telefoon}>
+        <Field id="telefoon" label="Telefoonnummer" error={localize(errors.telefoon)}>
           <input
             id="telefoon"
             name="telefoon"
@@ -212,7 +216,7 @@ export function RequestForm({
           />
         </Field>
         {reserveren && (
-          <Field id="categorie" label="Rijbewijs" error={errors.categorie}>
+          <Field id="categorie" label="Rijbewijs" error={localize(errors.categorie)}>
             <div className="relative">
               <select
                 id="categorie"
@@ -235,7 +239,7 @@ export function RequestForm({
         )}
       </div>
       {reserveren && (
-        <Field id="pakket" label="Pakket of prestatie" error={errors.pakket}>
+        <Field id="pakket" label="Pakket of prestatie" error={localize(errors.pakket)}>
           <div className="relative">
             <select
               id="pakket"
@@ -259,7 +263,7 @@ export function RequestForm({
       <Field
         id="bericht"
         label="Bericht"
-        error={errors.bericht}
+        error={localize(errors.bericht)}
         required
         hint="Vertel kort wat je zoekt, bijvoorbeeld je ervaring of gewenste startdatum."
       >
@@ -295,7 +299,7 @@ export function RequestForm({
       <Consent
         checked={consent}
         onChange={onConsentChange}
-        error={errors.toestemming}
+        error={localize(errors.toestemming)}
       />
       <Button type="submit" disabled={status === "loading"}>
         {status === "loading"

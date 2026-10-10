@@ -254,6 +254,48 @@ const completionTranslations: Record<Exclude<Locale, "nl">, Translation> = {
     "Gebruik deze drie situaties als eerste oriëntatie. Tijdens de intake kunnen we je keuze bijstellen.": "Usa queste tre situazioni come primo orientamento. Potremo modificare la tua scelta durante il colloquio.", "Een helder overzicht van de belangrijkste verschillen tussen de meest gekozen lesopties.": "Una panoramica chiara delle principali differenze tra le opzioni di lezione più richieste.", "Hoe gaat het verder na je aanvraag?": "Cosa succede dopo la richiesta?", "Twijfel je welk pakket past?": "Non sai quale pacchetto scegliere?", "Een rijopleiding wordt overzichtelijker wanneer je weet wat de volgende stap is.": "La formazione è più chiara quando sai qual è il prossimo passo.", "Heb je behoefte aan extra uitleg, een rustig tempo of juist een strakke planning? Zet het in je aanvraag. Zo kunnen we vanaf het eerste gesprek beter rekening houden met jouw situatie.": "Hai bisogno di spiegazioni aggiuntive, di un ritmo tranquillo o di una pianificazione precisa? Indicalo nella richiesta, così potremo considerare la tua situazione fin dal primo colloquio.", "Dat is geen probleem. Stuur je rijbewijs en je gewenste startmoment door; we zoeken samen de passende planning.": "Non è un problema. Inviaci la patente e la data di inizio preferita; troveremo insieme il programma adatto.", "Welke gegevens verwerken we?": "Quali dati trattiamo?", "Waarvoor gebruiken we ze?": "Per cosa li usiamo?", "Grondslag": "Base giuridica", "Met wie delen we ze?": "Con chi li condividiamo?", "Hoe lang bewaren we ze?": "Per quanto tempo li conserviamo?", "Je rechten": "I tuoi diritti", "Wijzigingen en vragen": "Modifiche e domande", "Wie zijn wij?": "Chi siamo?", "Aanbod en prijzen": "Offerta e prezzi", "Wat je koopt": "Cosa acquisti", "Annuleren en restitutie": "Annullamento e rimborsi", "Aansprakelijkheid": "Responsabilità", "Klachten": "Reclami", "Planning en uitvoering": "Pianificazione ed esecuzione", "Toepasselijk recht": "Legge applicabile", "Dit is een aanvraag, geen bevestigde reservering. We nemen contact met je op om het vervolg af te spreken.": "Questa è una richiesta, non una prenotazione confermata. Ti contatteremo per concordare il prossimo passo.", "Vertel kort wat je nodig hebt en wanneer je wilt starten.": "Spiega brevemente di cosa hai bisogno e quando vuoi iniziare.", "We beantwoorden je aanvraag en stemmen beschikbaarheid af.": "Risponderemo alla richiesta e concorderemo la disponibilità.", "Na akkoord plannen we je lessen samen in.": "Dopo l'accordo, pianificheremo insieme le lezioni.", "Pakket of prestatie": "Pacchetto o servizio", "(optioneel)": "(facoltativo)", "Ik geef toestemming om mijn gegevens te verwerken voor deze aanvraag, zoals beschreven in het": "Autorizzo il trattamento dei miei dati per questa richiesta, come indicato nella", "Vertel kort wat je zoekt, bijvoorbeeld je ervaring of gewenste startdatum.": "Spiega brevemente cosa cerchi, ad esempio la tua esperienza o la data di inizio desiderata.", "Vul je gegevens in; velden met een * zijn verplicht. We gebruiken je gegevens alleen om je aanvraag te beantwoorden.": "Inserisci i tuoi dati; i campi contrassegnati con * sono obbligatori. Usiamo i tuoi dati solo per rispondere alla richiesta."
   },
 };
+
+const requestErrorTranslations: Record<Exclude<Locale, "nl">, Translation> = {
+  en: {
+    "Aanvragen zijn tijdelijk niet beschikbaar. Neem contact met ons op.": "Requests are temporarily unavailable. Please contact us directly.",
+    "Te veel aanvragen. Probeer het later opnieuw.": "Too many requests right now. Please try again later.",
+    "Ongeldige aanvraag.": "We could not validate this request. Check your details and try again.",
+    "Verzenden mislukt.": "We could not send your request. Check your connection and try again.",
+    "De verbinding duurt te lang. Controleer je verbinding en probeer het opnieuw.": "The connection is taking too long. Check your connection and try again.",
+    "Het versturen is niet gelukt. Controleer je verbinding en probeer het opnieuw.": "Your request could not be sent. Check your connection and try again.",
+    "We hebben je aanvraag ontvangen. Dit is nog geen bevestigde reservering. We nemen zo snel mogelijk persoonlijk contact met je op.": "We received your request. This is not a confirmed booking yet. We will contact you personally as soon as possible.",
+  },
+  fr: {
+    "Aanvragen zijn tijdelijk niet beschikbaar. Neem contact met ons op.": "Les demandes sont temporairement indisponibles. Contactez-nous directement.",
+    "Te veel aanvragen. Probeer het later opnieuw.": "Trop de demandes pour le moment. Réessayez plus tard.",
+    "Ongeldige aanvraag.": "Nous n'avons pas pu valider cette demande. Vérifiez vos informations et réessayez.",
+    "Verzenden mislukt.": "Votre demande n'a pas pu être envoyée. Vérifiez votre connexion et réessayez.",
+    "De verbinding duurt te lang. Controleer je verbinding en probeer het opnieuw.": "La connexion prend trop de temps. Vérifiez votre connexion et réessayez.",
+    "Het versturen is niet gelukt. Controleer je verbinding en probeer het opnieuw.": "Votre demande n'a pas pu être envoyée. Vérifiez votre connexion et réessayez.",
+    "We hebben je aanvraag ontvangen. Dit is nog geen bevestigde reservering. We nemen zo snel mogelijk persoonlijk contact met je op.": "Nous avons reçu votre demande. Il ne s'agit pas encore d'une réservation confirmée. Nous vous contacterons personnellement dès que possible.",
+  },
+  es: {
+    "Aanvragen zijn tijdelijk niet beschikbaar. Neem contact met ons op.": "Las solicitudes no están disponibles temporalmente. Contacta con nosotros directamente.",
+    "Te veel aanvragen. Probeer het later opnieuw.": "Hay demasiadas solicitudes ahora. Inténtalo de nuevo más tarde.",
+    "Ongeldige aanvraag.": "No hemos podido validar la solicitud. Revisa tus datos e inténtalo de nuevo.",
+    "Verzenden mislukt.": "No hemos podido enviar tu solicitud. Revisa tu conexión e inténtalo de nuevo.",
+    "De verbinding duurt te lang. Controleer je verbinding en probeer het opnieuw.": "La conexión tarda demasiado. Revisa tu conexión e inténtalo de nuevo.",
+    "Het versturen is niet gelukt. Controleer je verbinding en probeer het opnieuw.": "No se ha podido enviar tu solicitud. Revisa tu conexión e inténtalo de nuevo.",
+    "We hebben je aanvraag ontvangen. Dit is nog geen bevestigde reservering. We nemen zo snel mogelijk persoonlijk contact met je op.": "Hemos recibido tu solicitud. Todavía no es una reserva confirmada. Nos pondremos en contacto contigo personalmente lo antes posible.",
+  },
+  it: {
+    "Aanvragen zijn tijdelijk niet beschikbaar. Neem contact met ons op.": "Le richieste non sono temporaneamente disponibili. Contattaci direttamente.",
+    "Te veel aanvragen. Probeer het later opnieuw.": "Troppe richieste al momento. Riprova più tardi.",
+    "Ongeldige aanvraag.": "Non è stato possibile validare la richiesta. Controlla i dati e riprova.",
+    "Verzenden mislukt.": "Non è stato possibile inviare la richiesta. Controlla la connessione e riprova.",
+    "De verbinding duurt te lang. Controleer je verbinding en probeer het opnieuw.": "La connessione impiega troppo tempo. Controlla la connessione e riprova.",
+    "Het versturen is niet gelukt. Controleer je verbinding en probeer het opnieuw.": "Non è stato possibile inviare la richiesta. Controlla la connessione e riprova.",
+    "We hebben je aanvraag ontvangen. Dit is nog geen bevestigde reservering. We nemen zo snel mogelijk persoonlijk contact met je op.": "Abbiamo ricevuto la tua richiesta. Non è ancora una prenotazione confermata. Ti contatteremo personalmente il prima possibile.",
+  },
+};
+for (const locale of Object.keys(requestErrorTranslations) as Array<Exclude<Locale, "nl">>) {
+  Object.assign(additionalTranslations[locale], requestErrorTranslations[locale]);
+}
 for (const locale of Object.keys(completionTranslations) as Array<Exclude<Locale, "nl">>) {
   Object.assign(additionalTranslations[locale], completionTranslations[locale]);
 }
