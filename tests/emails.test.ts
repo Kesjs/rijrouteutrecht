@@ -16,10 +16,8 @@ beforeEach(() => {
   mocks.get.mockResolvedValue(null);
   mocks.set.mockResolvedValue("OK");
 });
-it("reports visitor email failure after internal delivery", async () => {
-  mocks.send
-    .mockResolvedValueOnce({ error: null })
-    .mockResolvedValueOnce({ error: { message: "failure" } });
+it("sends the internal request notification only", async () => {
+  mocks.send.mockResolvedValueOnce({ error: null });
   const data = {
     type: "contact",
     naam: "Test",
@@ -29,9 +27,10 @@ it("reports visitor email failure after internal delivery", async () => {
     pakket: "",
     bericht: "<script>alert(1)</script>",
   };
-  expect(await sendRequestEmails(data)).toBe(false);
+  expect(await sendRequestEmails(data)).toBe(true);
   expect(mocks.send.mock.calls[0][0].html).not.toContain("<script>");
   expect(mocks.send.mock.calls[0][1].idempotencyKey).toMatch(/^request\//);
+  expect(mocks.send).toHaveBeenCalledTimes(1);
 });
 it("retries only the failed payment notification", async () => {
   mocks.get.mockResolvedValueOnce(true).mockResolvedValueOnce(null);

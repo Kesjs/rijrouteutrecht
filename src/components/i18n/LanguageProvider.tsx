@@ -24,6 +24,10 @@ function translateAttributes(root: HTMLElement, locale: Locale) {
 
 function translateDom(locale: Locale) {
   const root = document.body;
+  const documentElement = document.documentElement;
+  const originalTitle = documentElement.dataset.originalTitle ?? document.title;
+  documentElement.dataset.originalTitle = originalTitle;
+  document.title = translateText(originalTitle, locale);
   const nodes: Text[] = [];
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   let node: Node | null;

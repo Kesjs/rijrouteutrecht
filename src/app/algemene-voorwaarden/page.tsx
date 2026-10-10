@@ -12,8 +12,7 @@ export default function VoorwaardenPage() {
     <LegalPage title="Algemene voorwaarden" updated="oktober 2026">
       <h2>Wie zijn wij?</h2>
       <p>
-        {site.name}, {site.address}, KvK {site.kvk}, e-mail {site.email},
-        telefoon {site.phone}.
+        {site.name}, {site.address}, e-mail {site.email}.
       </p>
       <h2>Aanbod en prijzen</h2>
       <p>

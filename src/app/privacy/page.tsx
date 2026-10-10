@@ -13,8 +13,7 @@ export default function PrivacyPage() {
       <p>
         Dit privacybeleid legt uit hoe {site.name} omgaat met persoonsgegevens
           wanneer je de website bezoekt of een aanvraag verstuurt. Verantwoordelijke:
-          {site.name}, {site.address}, KvK {site.kvk},{" "}
-        {site.email}.
+          {site.name}, {site.address}, {site.email}.
       </p>
       <h2>Welke gegevens verwerken we?</h2>
       <ul>
