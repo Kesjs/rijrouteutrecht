@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   },
   description:
     "Praktijklessen, duidelijke prijzen en een helder traject naar je rijbewijs bij Stuurvast Rijschool in Utrecht.",
+  icons: {
+    icon: [{ url: "/brand/stuurvast-logo-mark.png", type: "image/png" }],
+    apple: "/brand/stuurvast-logo-mark.png",
+  },
   openGraph: { type: "website", locale: "nl_NL", siteName: site.name },
 };
 
