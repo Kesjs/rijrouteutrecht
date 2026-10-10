@@ -6,7 +6,7 @@ import { requestSchema, fieldErrors } from "@/lib/validation";
 import { licenseCategories } from "@/data/license-categories";
 import { packages } from "@/data/packages";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { translate } from "@/i18n/translations";
+import { translate, translateText } from "@/i18n/translations";
 import { useLocale } from "@/components/i18n/LanguageProvider";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -23,6 +23,7 @@ export function RequestForm({
   const { locale } = useLocale();
   const localize = (message?: string) =>
     message ? translate(message, locale) : undefined;
+  const localizeText = (message: string) => translateText(message, locale);
   const [values, setValues] = useState({
     naam: "",
     email: "",
@@ -171,11 +172,12 @@ export function RequestForm({
         )}
       </div>
       <p className="text-[14px] text-slate">
-        Vul je gegevens in; velden met een * zijn verplicht. We gebruiken je
-        gegevens alleen om je aanvraag te beantwoorden.
+        {localize(
+          "Vul je gegevens in; velden met een * zijn verplicht. We gebruiken je gegevens alleen om je aanvraag te beantwoorden.",
+        )}
       </p>
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="naam" label="Naam" error={localize(errors.naam)} required>
+        <Field id="naam" label={localize("Naam") ?? "Naam"} error={localize(errors.naam)} required>
           <input
             id="naam"
             name="naam"
@@ -188,7 +190,7 @@ export function RequestForm({
             {...aria("naam")}
           />
         </Field>
-        <Field id="email" label="E-mailadres" error={localize(errors.email)} required>
+        <Field id="email" label={localize("E-mailadres") ?? "E-mailadres"} error={localize(errors.email)} required>
           <input
             id="email"
             name="email"
@@ -202,7 +204,12 @@ export function RequestForm({
             {...aria("email")}
           />
         </Field>
-        <Field id="telefoon" label="Telefoonnummer" error={localize(errors.telefoon)}>
+        <Field
+          id="telefoon"
+          label={localize("Telefoonnummer") ?? "Telefoonnummer"}
+          error={localize(errors.telefoon)}
+          optionalLabel={localize("(optioneel)")}
+        >
           <input
             id="telefoon"
             name="telefoon"
@@ -216,7 +223,12 @@ export function RequestForm({
           />
         </Field>
         {reserveren && (
-          <Field id="categorie" label="Rijbewijs" error={localize(errors.categorie)}>
+          <Field
+            id="categorie"
+            label={localize("Rijbewijs") ?? "Rijbewijs"}
+            error={localize(errors.categorie)}
+            optionalLabel={localize("(optioneel)")}
+          >
             <div className="relative">
               <select
                 id="categorie"
@@ -226,10 +238,10 @@ export function RequestForm({
                 className={selectClass}
                 {...aria("categorie")}
               >
-                <option value="">Nog niet zeker</option>
+                <option value="">{localize("Nog niet zeker")}</option>
                 {licenseCategories.map((c) => (
                   <option key={c.slug} value={c.code}>
-                    {c.code} · {c.vehicleType}
+                    {localizeText(`${c.code} · ${c.vehicleType}`)}
                   </option>
                 ))}
               </select>
@@ -239,7 +251,12 @@ export function RequestForm({
         )}
       </div>
       {reserveren && (
-        <Field id="pakket" label="Pakket of prestatie" error={localize(errors.pakket)}>
+          <Field
+            id="pakket"
+            label={localize("Pakket of prestatie") ?? "Pakket of prestatie"}
+            error={localize(errors.pakket)}
+            optionalLabel={localize("(optioneel)")}
+          >
           <div className="relative">
             <select
               id="pakket"
@@ -249,10 +266,10 @@ export function RequestForm({
               className={selectClass}
               {...aria("pakket")}
             >
-              <option value="">Nog niet zeker</option>
+              <option value="">{localize("Nog niet zeker")}</option>
               {packages.map((p) => (
                 <option key={p.slug} value={p.name}>
-                  {p.name} · {p.priceLabel}
+                    {localizeText(`${p.name} · ${p.priceLabel}`)}
                 </option>
               ))}
             </select>
@@ -262,10 +279,12 @@ export function RequestForm({
       )}
       <Field
         id="bericht"
-        label="Bericht"
+        label={localize("Bericht") ?? "Bericht"}
         error={localize(errors.bericht)}
         required
-        hint="Vertel kort wat je zoekt, bijvoorbeeld je ervaring of gewenste startdatum."
+        hint={localize(
+          "Vertel kort wat je zoekt, bijvoorbeeld je ervaring of gewenste startdatum.",
+        )}
       >
         <textarea
           id="bericht"
@@ -300,13 +319,24 @@ export function RequestForm({
         checked={consent}
         onChange={onConsentChange}
         error={localize(errors.toestemming)}
+        consentLabel={localize(
+          "Ik geef toestemming om mijn gegevens te verwerken voor deze aanvraag, zoals beschreven in het",
+        )}
+        privacyLabel={localize("privacybeleid")}
       />
       <Button type="submit" disabled={status === "loading"}>
-        {status === "loading"
-          ? "Bezig met versturen…"
+        {status === "loading" ? (
+          <span className="inline-flex items-center gap-2" aria-live="polite">
+            <span
+              aria-hidden
+              className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none"
+            />
+            {localize("Bezig met versturen…")}
+          </span>
+        )
           : reserveren
-            ? "Aanvraag versturen"
-            : "Bericht versturen"}
+            ? localize("Aanvraag versturen")
+            : localize("Bericht versturen")}
       </Button>
     </form>
   );

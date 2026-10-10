@@ -9,6 +9,7 @@ export function Field({
   error,
   hint,
   required,
+  optionalLabel = "(optioneel)",
   children,
 }: {
   id: string;
@@ -16,6 +17,7 @@ export function Field({
   error?: string;
   hint?: string;
   required?: boolean;
+  optionalLabel?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -28,7 +30,7 @@ export function Field({
             *
           </span>
         ) : (
-          <span className="font-medium text-slate"> (optioneel)</span>
+          <span className="font-medium text-slate"> {optionalLabel}</span>
         )}
       </label>
       {children}
@@ -50,10 +52,14 @@ export function Consent({
   checked,
   onChange,
   error,
+  consentLabel = "Ik geef toestemming om mijn gegevens te verwerken voor deze aanvraag, zoals beschreven in het",
+  privacyLabel = "privacybeleid",
 }: {
   checked: boolean;
   onChange: (v: boolean) => void;
   error?: string;
+  consentLabel?: string;
+  privacyLabel?: string;
 }) {
   return (
     <div>
@@ -73,10 +79,9 @@ export function Consent({
           ✓
         </span>
         <span>
-          Ik geef toestemming om mijn gegevens te verwerken voor deze aanvraag,
-          zoals beschreven in het{" "}
+          {consentLabel}{" "}
           <a href="/privacy" className="font-bold text-vivid-indigo underline">
-            privacybeleid
+            {privacyLabel}
           </a>
           .
         </span>
