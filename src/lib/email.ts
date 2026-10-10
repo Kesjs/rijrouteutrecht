@@ -13,6 +13,7 @@ const esc = (s: string) =>
 
 const from = () => process.env.EMAIL_FROM ?? `${site.name} <${site.email}>`;
 const inbox = () => process.env.EMAIL_TO ?? site.email;
+const logoUrl = () => `${site.url.replace(/\/$/, "")}/brand/stuurvast-logo-mark.png`;
 
 const smtpConfig = () => {
   const user = process.env.SMTP_USER;
@@ -79,9 +80,16 @@ async function send(
 }
 
 const wrap = (body: string) =>
-  `<div style="font-family:Inter,Arial,sans-serif;color:#222;max-width:560px;line-height:1.5">${body}
+  `<div style="font-family:Inter,Arial,sans-serif;color:#222;max-width:560px;line-height:1.5">
+  <div style="padding:0 0 18px;border-bottom:1px solid #eaeaf7;margin-bottom:22px">
+    <img src="${logoUrl()}" alt="${esc(site.name)}" width="72" height="72" style="display:block;width:72px;height:72px;object-fit:contain" />
+  </div>
+  ${body}
   <hr style="border:none;border-top:1px solid #eaeaf7;margin:24px 0"/>
-  <p style="color:#686878;font-size:13px">${esc(site.name)} · ${esc(site.address)} · ${esc(site.phone)} · ${esc(site.email)}</p></div>`;
+  <p style="margin:0;color:#222;font-weight:700">${esc(site.name)}</p>
+  <p style="margin:4px 0 0;color:#686878;font-size:13px">${esc(site.address)} · ${esc(site.phone)}</p>
+  <p style="margin:4px 0 0;font-size:13px"><a href="${esc(site.emailHref)}" style="color:#4d4bd5">${esc(site.email)}</a> · <a href="${esc(site.url)}" style="color:#4d4bd5">${esc(site.url.replace(/^https?:\/\//, ""))}</a></p>
+  </div>`;
 
 const rows = (items: [string, string][]) =>
   `<table style="border-collapse:collapse;width:100%">${items
