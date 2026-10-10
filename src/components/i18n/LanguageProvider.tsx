@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { Locale, locales, translate } from "@/i18n/translations";
+import { Locale, locales, translate, translateText } from "@/i18n/translations";
 
 const STORAGE_KEY = "stuurvast-locale";
 const LocaleContext = createContext<{ locale: Locale; setLocale: (locale: Locale) => void }>({
@@ -17,7 +17,7 @@ function translateAttributes(root: HTMLElement, locale: Locale) {
       const original = element.dataset[`original${attribute.replace(/-([a-z])/g, (_, c) => c.toUpperCase())}`];
       if (!original) element.dataset[`original${attribute.replace(/-([a-z])/g, (_, c) => c.toUpperCase())}`] = value;
       const source = original ?? value;
-      element.setAttribute(attribute, translate(source, locale));
+      element.setAttribute(attribute, translateText(source, locale));
     }
   });
 }
@@ -38,7 +38,7 @@ function translateDom(locale: Locale) {
     if (!trimmed) return;
     const original = (textNode as Text & { __nl?: string }).__nl ?? trimmed;
     (textNode as Text & { __nl?: string }).__nl = original;
-    const translated = translate(original, locale);
+    const translated = translateText(original, locale);
     if (trimmed !== translated) {
       const start = raw.indexOf(trimmed);
       textNode.textContent = `${raw.slice(0, start)}${translated}${raw.slice(start + trimmed.length)}`;

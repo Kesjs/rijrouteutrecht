@@ -8,9 +8,6 @@ export function Footer() {
         <div>
           <p className="font-bold">{site.name}</p>
           <p className="mt-2 text-sm text-soft-violet">{site.address}</p>
-          <p className="mt-2 text-sm text-soft-violet">
-            <span>Werkgebied</span>: {site.serviceArea}
-          </p>
         </div>
         <div>
           <p className="text-sm font-bold">Navigatie</p>
@@ -26,12 +23,8 @@ export function Footer() {
           <p className="text-sm font-bold">Contact</p>
           <ul className="mt-2 space-y-1 text-sm text-soft-violet">
             <li>
-              <a href={site.phoneHref}>{site.phone}</a>
-            </li>
-            <li>
               <a href={site.emailHref}>{site.email}</a>
             </li>
-            <li>KvK {site.kvk}</li>
           </ul>
         </div>
         <div>
