@@ -3,6 +3,19 @@ import { getStore } from "./store";
 
 const hits = new Map<string, { count: number; until: number }>();
 
+function memoryRateLimit(
+  key: string,
+  now: number,
+  max: number,
+  windowMs: number,
+) {
+  for (const [k, v] of hits) if (v.until <= now) hits.delete(k);
+  const value = hits.get(key) ?? { count: 0, until: now + windowMs };
+  value.count++;
+  hits.set(key, value);
+  return value.count <= max;
+}
+
 export async function rateLimit(
   key: string,
   max = 5,
@@ -22,16 +35,11 @@ export async function rateLimit(
       );
       return count <= max;
     } catch {
-      console.error("[rate-limit] opslag niet beschikbaar");
-      return null;
+      console.error("[rate-limit] opslag niet beschikbaar; mémoire utilisée");
+      return memoryRateLimit(key, now, max, windowMs);
     }
   }
-  if (process.env.NODE_ENV === "production") return null;
-  for (const [k, v] of hits) if (v.until <= now) hits.delete(k);
-  const value = hits.get(key) ?? { count: 0, until: now + windowMs };
-  value.count++;
-  hits.set(key, value);
-  return value.count <= max;
+  return memoryRateLimit(key, now, max, windowMs);
 }
 
 export function clientIp(req: Request): string {
