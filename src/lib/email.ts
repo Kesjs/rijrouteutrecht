@@ -92,6 +92,12 @@ const rows = (items: [string, string][]) =>
     )
     .join("")}</table>`;
 
+const panel = (title: string, body: string) =>
+  `<div style="border:1px solid #e5e5f4;border-radius:12px;padding:18px 20px;margin:16px 0">
+    <p style="margin:0 0 10px;color:#4d4bd5;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">${esc(title)}</p>
+    ${body}
+  </div>`;
+
 export async function sendRequestEmails(d: {
   type: string;
   naam: string;
@@ -104,39 +110,38 @@ export async function sendRequestEmails(d: {
   const key = createHash("sha256").update(JSON.stringify(d)).digest("hex");
   const label =
     d.type === "reservering" ? "Nieuwe aanvraag" : "Nieuw contactbericht";
+  const receivedAt = new Intl.DateTimeFormat("fr-FR", {
+    dateStyle: "full",
+    timeStyle: "short",
+    timeZone: "Europe/Brussels",
+  }).format(new Date());
   const internal = await send(
     {
       to: inbox(),
       replyTo: d.email,
-      subject: `${label} van ${d.naam}`,
+      subject: `${label} — ${d.naam}`,
       html: wrap(
-        `<h2>${label}</h2>${rows([
-          ["Naam", d.naam],
+        `<div style="border-bottom:1px solid #e5e5f4;padding-bottom:16px;margin-bottom:18px">
+          <p style="margin:0 0 6px;color:#4d4bd5;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Stuurvast Rijschool</p>
+          <h2 style="margin:0;font-size:24px;line-height:1.2">${esc(label)}</h2>
+          <p style="margin:8px 0 0;color:#686878">Reçu le ${esc(receivedAt)}</p>
+        </div>
+        ${panel("Coordonnées du client", rows([
+          ["Nom", d.naam],
           ["E-mail", d.email],
-          ["Telefoon", d.telefoon],
-          ["Rijbewijs", d.categorie],
-          ["Pakket", d.pakket],
-          ["Bericht", d.bericht],
-        ])}`,
+          ["Téléphone", d.telefoon],
+        ]))}
+        ${panel("Demande", rows([
+          ["Permis", d.categorie],
+          ["Forfait", d.pakket],
+        ]))}
+        ${panel("Message", `<p style="margin:0;white-space:pre-wrap">${esc(d.bericht)}</p>`)}
+        <p style="margin:20px 0 0;color:#686878;font-size:13px">Utilise le bouton « Répondre » de Gmail pour répondre directement à ${esc(d.naam)}.</p>`,
       ),
     },
     `request/${key}/internal`,
   );
-  if (!internal.ok) return false;
-  const visitor = await send(
-    {
-      to: d.email,
-      subject: "We hebben je aanvraag ontvangen",
-      html: wrap(
-        `<h2>Bedankt, ${esc(d.naam)}</h2>
-      <p>We hebben je bericht ontvangen en nemen zo snel mogelijk contact met je op.
-      Dit is een aanvraag, nog geen bevestigde reservering.</p>
-      <p style="color:#686878">Jouw bericht:</p><p>${esc(d.bericht)}</p>`,
-      ),
-    },
-    `request/${key}/visitor`,
-  );
-  return visitor.ok;
+  return internal.ok;
 }
 
 export async function sendPaymentEmails(d: {
